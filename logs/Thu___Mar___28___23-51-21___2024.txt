@@ -1,0 +1,118 @@
+
+
+
+Start downloading works_by_ids in 7 thread(s) at [Thu Mar 28 23:51:27 2024]
+
+
+
+[Thu Mar 28 23:54:00 2024] count: 500, speed: 0.303 sec/article, request: 60.1%, db: 27.4, other: 12.5%
+[Thu Mar 28 23:56:43 2024] count: 500, speed: 0.325 sec/article, request: 55.3%, db: 25.5, other: 19.2%
+[Thu Mar 28 23:59:54 2024] count: 500, speed: 0.353 sec/article, request: 55.6%, db: 27.8, other: 16.6%
+[Fri Mar 29 00:03:47 2024] count: 500, speed: 0.496 sec/article, request: 55.7%, db: 27.8, other: 16.5%
+[Fri Mar 29 00:07:32 2024] count: 500, speed: 0.451 sec/article, request: 55.3%, db: 28.7, other: 16.0%
+[Fri Mar 29 00:10:43 2024] count: 500, speed: 0.378 sec/article, request: 54.0%, db: 29.5, other: 16.5%
+[Fri Mar 29 00:14:05 2024] count: 500, speed: 0.405 sec/article, request: 60.9%, db: 25.3, other: 13.8%
+[Fri Mar 29 00:17:11 2024] count: 500, speed: 0.37 sec/article, request: 56.8%, db: 27.0, other: 16.2%
+[Fri Mar 29 00:20:34 2024] count: 500, speed: 0.406 sec/article, request: 51.4%, db: 29.9, other: 18.7%
+[Fri Mar 29 00:23:53 2024] count: 500, speed: 0.4 sec/article, request: 54.6%, db: 28.5, other: 16.9%
+
+
+Traceback (most recent call last):
+  File "/home/george/Документы/harddrive/articles-analysis/programs/downloading_referenced_works.py", line 525, in download_ref_works
+    download_works_by_ids_global(ids, level)
+  File "/home/george/Документы/harddrive/articles-analysis/programs/downloading_referenced_works.py", line 445, in download_works_by_ids_global
+    stopping_thread.join()
+  File "/usr/lib/python3.10/threading.py", line 1096, in join
+    self._wait_for_tstate_lock()
+  File "/usr/lib/python3.10/threading.py", line 1116, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt
+
+Restarting..
+
+
+
+Start downloading works_by_ids in 7 thread(s) at [Fri Mar 29 00:26:01 2024]
+
+
+
+[Fri Mar 29 00:26:02 2024] count: 500, speed: 0.253 sec/article, request: 55.3%, db: 26.7, other: 18.0%
+[Fri Mar 29 00:26:02 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 6.1, other: 93.9%
+[Fri Mar 29 00:26:02 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 6.9, other: 93.1%
+[Fri Mar 29 00:26:02 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 7.1, other: 92.9%
+[Fri Mar 29 00:26:02 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 7.0, other: 93.0%
+[Fri Mar 29 00:26:02 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 6.6, other: 93.4%
+[Fri Mar 29 00:26:03 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 7.5, other: 92.5%
+[Fri Mar 29 00:26:03 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 6.6, other: 93.4%
+[Fri Mar 29 00:26:03 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 7.0, other: 93.0%
+[Fri Mar 29 00:26:03 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 8.1, other: 91.9%
+[Fri Mar 29 00:26:04 2024] Problem with adding article with id = W2950272449
+Traceback (most recent call last):
+  File "/home/george/Документы/harddrive/articles-analysis/programs/downloading_referenced_works.py", line 381, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 00:26:06 2024] Problem with adding article with id = W2029257754
+Traceback (most recent call last):
+  File "/home/george/Документы/harddrive/articles-analysis/programs/downloading_referenced_works.py", line 381, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 00:26:09 2024] Problem with getting article with id = W1992505804
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(method, url, response=response, _pool=self)
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W1992505804 (Caused by ResponseError('too many 429 error responses'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/george/Документы/harddrive/articles-analysis/programs/downloading_referenced_works.py", line 356, in download_work_by_id
+    work = Works()[id_]
+  File "/usr/local/lib/python3.10/dist-packages/pyalex/api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "/usr/local/lib/python3.10/dist-packages/pyalex/api.py", line 257, in _get_from_url
+    res = _get_requests_session().get(url, auth=OpenAlexAuth(config))
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 557, in get
+    return self.request('GET', url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 544, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 657, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 507, in send
+    raise RetryError(e, request=request)
+requests.exceptions.RetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W1992505804 (Caused by ResponseError('too many 429 error responses'))
+
+[Fri Mar 29 00:26:09 2024] Problem with getting article with id = W2949276763
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(method, url, response=response, _pool=self)
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2949276763 (Caused by ResponseError('too many 429 error responses'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/george/Документы/harddrive/articles-analysis/programs/downloading_referenced_works.py", line 356, in download_work_by_id
+    work = Works()[id_]
+  File "/usr/local/lib/python3.10/dist-packages/pyalex/api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "/usr/local/lib/python3.10/dist-packages/pyalex/api.py", line 257, in _get_from_url
+    res = _get_requests_session().get(url, auth=OpenAlexAuth(config))
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 557, in get
+    return self.request('GET', url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 544, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 657, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 507, in send
+    raise RetryError(e, request=request)
+requests.exceptions.RetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2949276763 (Caused by ResponseError('too many 429 error responses'))
+

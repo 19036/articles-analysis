@@ -13,7 +13,7 @@ import pyalex
 from threading import Thread, Lock
 from pyalex import Works, Authors, Sources, Institutions, Concepts, Publishers, Funders
 
-pyalex.config.email = "a.khramov@g.nsu.ru"
+pyalex.config.email = "g.avilkin@g.nsu.ru"
 
 db_path = '../local_db/articles.db'
 logs_path = ('../logs/' + time.ctime().replace(' ', '___') + '.txt').replace(':', '-')
@@ -527,6 +527,7 @@ def download_ref_works(name='', level=1):
             s = f'\n\n{traceback.format_exc()}\nRestarting..\n'
             with open(logs_path, 'a') as f:
                 f.write(s)
+            time.sleep(5)
     
 
 if __name__ == '__main__':
@@ -536,7 +537,7 @@ if __name__ == '__main__':
     # name = 'valsek'
     # name = 'sasan'
     
-    # download_ref_works(name)
+    download_ref_works(name)
     
     
     pass
