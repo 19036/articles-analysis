@@ -17,7 +17,7 @@ pyalex.config.email = "a.khramov@g.nsu.ru"
 
 db_path = '../local_db/articles.db'
 logs_path = ('../logs/' + time.ctime().replace(' ', '___') + '.txt').replace(':', '-')
-number_of_threads = 5
+number_of_threads = 4
 conn_attempt = 1
 try:
     conn = sqlite3.connect(db_path, check_same_thread=False)
@@ -397,7 +397,6 @@ def download_work_by_id(id_, level=1):
             except:
                 pass
         time_check.db += time.time() - t_start
-        conn.commit()
         try:
             conn.commit()
             conn.close()
@@ -488,6 +487,7 @@ def update_ref_works_ids_request(req_path='../requests/sasan.txt', level=1):
                         ''', (id_,))
         already_exists = cursor.fetchall()[0][0]
         if already_exists or id_ == '':
+            count += 1
             num_already_exists += 1
             continue
         ids += id_ + ' '
@@ -545,7 +545,7 @@ if __name__ == '__main__':
     # name = 'valsek'
     # name = 'sasan'
     
-    download_ref_works(name)
+    # download_ref_works(name)
     
     
     pass
