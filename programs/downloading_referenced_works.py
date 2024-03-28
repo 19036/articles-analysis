@@ -17,6 +17,7 @@ pyalex.config.email = "a.khramov@g.nsu.ru"
 
 db_path = '../local_db/articles.db'
 logs_path = ('../logs/' + time.ctime().replace(' ', '___') + '.txt').replace(':', '-')
+number_of_threads = 5
 conn_attempt = 1
 try:
     conn = sqlite3.connect(db_path, check_same_thread=False)
@@ -360,6 +361,7 @@ def download_work_by_id(id_, level=1):
                 s = f'[{time.ctime()}] Problem with getting article with id = {id_}\n'
                 s += traceback.format_exc() + '\n'
                 f.write(s)
+            print(s)
             conn.commit()
             conn.close()
         return 
@@ -389,11 +391,18 @@ def download_work_by_id(id_, level=1):
                 s = f'[{time.ctime()}] Problem with adding article with id = {id_}\n'
                 s += traceback.format_exc() + '\n'
                 f.write(s)
-            conn.commit()
-            conn.close()
+            try:
+                conn.commit()
+                conn.close()
+            except:
+                pass
         time_check.db += time.time() - t_start
         conn.commit()
-        conn.close()
+        try:
+            conn.commit()
+            conn.close()
+        except:
+            pass
     
 
 def download_works_by_ids_local(ids, level=1):
@@ -424,7 +433,7 @@ def download_works_by_ids_global(ids, level=1):
     
     global time_check
     global logs_path
-    number_of_threads = 7
+    global number_of_threads
     time_check.number_of_threads = number_of_threads
     with open(logs_path, 'a') as f:
         s = f'\n\n\nStart downloading works_by_ids in {number_of_threads} thread(s) at [{time.ctime()}]\n\n\n\n'
@@ -536,7 +545,7 @@ if __name__ == '__main__':
     # name = 'valsek'
     # name = 'sasan'
     
-    # download_ref_works(name)
+    download_ref_works(name)
     
     
     pass

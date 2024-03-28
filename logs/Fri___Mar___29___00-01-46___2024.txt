@@ -1,0 +1,63 @@
+
+
+
+Start downloading works_by_ids in 5 thread(s) at [Fri Mar 29 00:01:51 2024]
+
+
+
+[Fri Mar 29 00:02:57 2024] Problem with getting article with id = W1893068185
+urllib3.exceptions.ProtocolError: ('Connection aborted.', TimeoutError(10060, 'ѕопытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое врем€ не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера', None, 10060, None))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W1893068185 (Caused by ProtocolError('Connection aborted.', TimeoutError(10060, 'ѕопытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое врем€ не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера', None, 10060, None)))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 357, in download_work_by_id
+    work = Works()[id_]
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 257, in _get_from_url
+    res = _get_requests_session().get(url, auth=OpenAlexAuth(config))
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W1893068185 (Caused by ProtocolError('Connection aborted.', TimeoutError(10060, 'ѕопытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое врем€ не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера', None, 10060, None)))
+
+[Fri Mar 29 00:03:04 2024] count: 500, speed: 0.146 sec/article, request: 88.6%, db: 1.6, other: 9.8%
+[Fri Mar 29 00:04:13 2024] Problem with adding article with id = W2182463137
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 00:04:15 2024] count: 500, speed: 0.14 sec/article, request: 98.0%, db: 1.9, other: 0.1%
+[Fri Mar 29 00:05:44 2024] count: 500, speed: 0.144 sec/article, request: 97.8%, db: 1.7, other: 0.5%
+[Fri Mar 29 00:07:10 2024] count: 500, speed: 0.137 sec/article, request: 97.8%, db: 1.7, other: 0.5%
+[Fri Mar 29 00:08:30 2024] Problem with adding article with id = W2493980134
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 00:08:38 2024] count: 500, speed: 0.137 sec/article, request: 97.8%, db: 2.0, other: 0.2%
+[Fri Mar 29 00:09:36 2024] Problem with adding article with id = W3093304401
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
