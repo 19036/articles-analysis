@@ -1,0 +1,6 @@
+Start merging tables:
+From ../local_db/articles.db, articles to ../../main_db/articles.db, articles
+
+Got values in 3.4 sec. Merge complete in 44.0 sec
+10 from 99955 articles already exist, their ids:
+W4285719527 W618980177 W3118831888 W4309447643 W2100767772 W4244696065 W4295975822 W3025856704 W4288396072 W203291046
