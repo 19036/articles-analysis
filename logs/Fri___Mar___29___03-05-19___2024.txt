@@ -1,0 +1,22 @@
+
+
+
+Start downloading works_by_ids in 4 thread(s) at [Fri Mar 29 03:05:27 2024]
+
+
+
+[Fri Mar 29 03:05:28 2024] count: 500, speed: 0.0 sec/article, request: 0.0%, db: 57.3, other: 42.7%
+
+
+Traceback (most recent call last):
+  File "/home/george/Документы/harddrive/articles-analysis/programs/downloading_referenced_works.py", line 534, in download_ref_works
+    download_works_by_ids_global(ids, level)
+  File "/home/george/Документы/harddrive/articles-analysis/programs/downloading_referenced_works.py", line 455, in download_works_by_ids_global
+    thread.join()
+  File "/usr/lib/python3.10/threading.py", line 1096, in join
+    self._wait_for_tstate_lock()
+  File "/usr/lib/python3.10/threading.py", line 1116, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt
+
+Restarting..
