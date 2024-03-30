@@ -87,3 +87,9 @@ AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoade
 [Fri Mar 29 22:45:59 2024]   1000 abstracts inserted in 71.1 sec, overall it's 14.1 abstracts/sec
 [Fri Mar 29 22:47:07 2024]   1000 abstracts inserted in 67.6 sec, overall it's 14.8 abstracts/sec
 [Fri Mar 29 22:48:14 2024]   1000 abstracts inserted in 67.1 sec, overall it's 14.9 abstracts/sec
+[Fri Mar 29 22:49:21 2024]   1000 abstracts inserted in 66.9 sec, overall it's 14.9 abstracts/sec
+[Fri Mar 29 22:50:29 2024]   1000 abstracts inserted in 68.8 sec, overall it's 14.5 abstracts/sec
+[Fri Mar 29 22:51:37 2024]   1000 abstracts inserted in 67.7 sec, overall it's 14.8 abstracts/sec
+[Fri Mar 29 22:52:45 2024]   1000 abstracts inserted in 68.5 sec, overall it's 14.6 abstracts/sec
+[Fri Mar 29 22:53:41 2024]   196 abstracts inserted in 55.3 sec, overall it's 3.5 abstracts/sec
+[Fri Mar 29 22:54:13 2024]   Finally 100.0% (14192 from 14196) abstracts inserted in 1005.5 sec

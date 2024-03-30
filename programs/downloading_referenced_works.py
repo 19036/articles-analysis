@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS articles (
     keywords_oa TEXT,
     topics_oa TEXT,
     level INT
+    cleaned_abstract TEXT
 )
 """)
 
@@ -452,6 +453,7 @@ def download_ref_works(name='', level=1):
         except:
             s = f'{traceback.format_exc()}\nRestarting..\n'
             write_logs(s)
+    
     
 
 if __name__ == '__main__':

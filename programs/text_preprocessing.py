@@ -1,11 +1,11 @@
 import sqlite3
 import sys, os, time
 import json  # для конвертации словарь <--> строка: json.dumps(dict), json.loads(str)
-import nltk
+# import nltk
 import traceback
 from nltk.corpus import stopwords
 from threading import Thread, Lock
-import textacy
+# import textacy
 import spacy
 from textacy.preprocessing import normalize, remove, replace, make_pipeline
 
@@ -204,8 +204,13 @@ def clean_abstracts_global(level=1):
 
 if __name__ == '__main__':
     
-    clean_abstracts_global()
+    # clean_abstracts_global()
     
     pass
 
 
+try:
+    conn.commit()
+    conn.close()
+except:
+    pass

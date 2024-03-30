@@ -1,6 +1,0 @@
-
-Start cleaning abstracts of level = 1 articles
-
-[Fri Mar 29 21:08:25 2024]   97 abstracts cleaned in 5.9 sec, start inserting in database..
-[Fri Mar 29 21:08:25 2024]   97 abstracts inserted in 0.1 sec, overall it's 16.7 abstracts/sec
-[Fri Mar 29 21:08:25 2024]   Finally 97.0% (97 from 100) abstracts inserted in 6.0 sec
