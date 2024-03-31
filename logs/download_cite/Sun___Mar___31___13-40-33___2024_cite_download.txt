@@ -1,0 +1,4 @@
+[Sun Mar 31 13:40:33 2024]   Start downloading cite_works for level_2 in 4 thread(s)
+
+[Sun Mar 31 13:42:28 2024]   Number of articles to check: 515928
+[Sun Mar 31 13:42:28 2024]   Number of cite works estimation: 89025660

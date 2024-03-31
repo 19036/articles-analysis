@@ -117,6 +117,7 @@ def train_doc2vec():
         texts = texts[step:]
         train_data = texts[:step]
         documents = [TaggedDocument(doc, [str(i+step*count)]) for i, doc in enumerate(train_data)]
+        model.build_vocab(documents)
         model.train(documents, total_examples=len(train_data), epochs=model.epochs)
         count += 1
         t = round(time.time() - t_start, 1)
@@ -131,7 +132,7 @@ def train_doc2vec():
 if __name__ == '__main__':
     
     # get_texts()
-    # train_doc2vec()
+    train_doc2vec()
     
     pass
 

@@ -11,7 +11,7 @@ pyalex.config.email = "a.khramov@g.nsu.ru"
 db_path = '../local_db/articles.db'
 main_db_path = '../../main_db/articles.db'
 logs_path = ('../logs/download_ref/' + time.ctime().replace(' ', '___') + '_ref_download.txt').replace(':', '-')
-requests_path = '../requests/ref_works_block_'
+requests_path = '../requests/ref_works_'
 number_of_threads = 4
 try:
     conn = sqlite3.connect(db_path, check_same_thread=False)
@@ -78,18 +78,6 @@ class Time_Check():
 
 time_check = Time_Check()
 
-def database_changing():
-    
-    " Добавление столбцов "
-    # cursor.execute('alter table articles add column cites_this_work')
-    
-    " Удаление столбцов "
-    # cursor.execute('alter table articles drop column id')
-    
-    " Вставка значений "
-    # cursor.execute('update articles set level = ?', (1,))
-    
-    pass
 
 def sql_requests():
     
@@ -159,15 +147,11 @@ def work_parsing(work):
     return column_names, column_content
 
 
-# def stop_sign():
-#     sign = input()
-#     if sign in ['0', 's', 'stop', 'aa']:
-#         sys.exit()
-
-
 def compile_ref_works_ids_request(level=1):
     
     global main_db_path
+    global requests_path
+    req_path = requests_path + f'level_{level}_block_'
     sure = 0
     # sure = 1
     if not sure:
@@ -222,14 +206,14 @@ def compile_ref_works_ids_request(level=1):
         count_local += 1
         ids += id_ + ' '
         if count_local >= 100000:
-            path = f'{requests_path}{count_global}.txt'
+            path = f'{req_path}{count_global}.txt'
             with open(path, 'a') as f:
                 f.write(ids[:-1])
             ids = ''
             count_local = 0
             print(f'{count_global} block compiled')
             count_global += 1
-    path = f'{requests_path}{count_global}.txt'
+    path = f'{req_path}{count_global}.txt'
     with open(path, 'a') as f:
         f.write(ids[:-1])
     if count_global == 1:
@@ -243,7 +227,6 @@ def compile_ref_works_ids_request(level=1):
         conn.close()
     except:
         pass
-
 
 
 def download_work_by_id(id_, level=1):
@@ -352,10 +335,9 @@ def download_works_by_ids_global(ids, level=1):
     global time_check
     global number_of_threads
     time_check.number_of_threads = number_of_threads
-    s = f'\n\n\nStart downloading works_by_ids in {number_of_threads} thread(s) at [{time.ctime()}]\n'
-    write_logs(s, 0)
+    s = f'Start downloading works_by_ids for level_{level} in {number_of_threads} thread(s)\n'
+    write_logs(s)
     threads = []
-    # stopping_thread = Thread(target=stop_sign, name='stopping_thread')
     length = len(ids)
     step = round(length/number_of_threads)
     ids_groups = [ids[step*i: step*(i+1)] for i in range(number_of_threads)]
@@ -365,9 +347,7 @@ def download_works_by_ids_global(ids, level=1):
         thread = Thread(target=download_works_by_ids_local, args=(ids_groups[i], level), name=f"thread_{i+1}")
         thread.start()
         threads.append(thread)
-    # stopping_thread.start()
     
-    # stopping_thread.join()
     for thread in threads:
         thread.join()
         
@@ -422,8 +402,7 @@ def update_ref_works_ids_request(req_path='../requests/ref_works_block_1.txt', l
         f.write(ids)
     print(f'From {count} ids {num_already_exists} already exist, so only {ids.count(" ") + 1} left.')
            
-              
-        
+                    
 def download_ref_works(name='', level=1):
     
     # req_path = '../requests/'
@@ -459,13 +438,10 @@ def download_ref_works(name='', level=1):
 if __name__ == '__main__':
     
     name = ''
-    # name = 'george'
-    # name = 'valsek'
-    # name = 'sasan'
     
     # download_ref_works(name)
     
-    
+    # compile_ref_works_ids_request(2)
     
     
     pass
