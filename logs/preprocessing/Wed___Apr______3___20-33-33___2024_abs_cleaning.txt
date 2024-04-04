@@ -1,0 +1,98 @@
+
+Start cleaning abstracts of level_2 articles
+
+[Wed Apr  3 20:33:46 2024]   Something wrong with cleaning {"We": [0], "consider": [1], "the": [2, 28, 32, 52, 106, 119, 140, 156], "problem": [3, 120], "of": [4, 21, 30, 34, 54, 85, 108, 113, 139], "simultaneous": [5], "source": [6], "location:": [7], "selecting": [8], "locations": [9, 35], "for": [10, 142], "sources": [11], "in": [12], "a": [13, 18, 83, 89, 130, 147], "capacitated": [14], "graph": [15], "such": [16], "that": [17, 91, 118], "given": [19], "set": [20], "demands": [22], "can": [23, 79], "be": [24, 80], "satisfied": [25], "simultaneously,": [26], "with": [27, 82, 132, 150], "goal": [29], "minimizing": [31], "number": [33, 107], "chosen.": [36], "For": [37, 67, 110], "general": [38], "directed": [39], "and": [40, 56, 75], "undirected": [41, 68, 111], "graphs": [42, 112], "we": [43, 70, 116, 125], "give": [44, 71, 88, 129], "an": [45, 72], "O(log": [46], "D)-approximation": [47], "algorithm,": [48], "where": [49, 103, 153], "D": [50], "is": [51, 105, 121, 155], "sum": [53], "demands,": [55], "prove": [57], "matching": [58], "\u03a9(log": [59], "D)": [60], "hardness": [61], "results": [62], "assuming": [63], "P": [64], "\u2260": [65], "NP.": [66], "trees,": [69], "exact": [73, 151], "algorithm": [74], "show": [76, 117], "how": [77], "this": [78], "combined": [81], "result": [84], "R\u00e4cke": [86], "to": [87, 128], "solution": [90], "exceeds": [92], "edge": [93], "capacities": [94, 141], "by": [95], "at": [96, 133], "most": [97, 134], "O(log2": [98], "n": [99, 104], "log": [100, 101], "n),": [102], "nodes.": [109], "bounded": [114], "treewidth": [115], "still": [122], "NP-hard,": [123], "but": [124], "are": [126], "able": [127], "PTAS": [131], "(1": [135], "+": [136], "\u03f5)": [137], "violation": [138], "arbitrarily": [143], "small": [144], "\u03f5,": [145], "or": [146], "(k+1)": [148], "approximation": [149], "capacities,": [152], "k": [154], "treewidth.": [157]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 95, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 81, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 95, in __load
+    args, kwargs = self.__args, self.__kwargs
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__args'
+
+
+[Wed Apr  3 20:33:46 2024]   Something wrong with cleaning {"In": [0], "a": [1, 64, 93], "piece": [2], "published": [3], "in": [4, 74], "1981,": [5], "H.": [6], "M.": [7], "Edwards": [8, 19, 37, 77], "touts": [9], "the": [10, 14, 46, 53, 81, 90], "benefits": [11], "of": [12, 80, 85], "reading": [13, 89], "masters.": [15], "A": [16], "quarter-century": [17], "later,": [18], "takes": [20], "seriously": [21], "his": [22], "own": [23, 69], "advice": [24], "by": [25, 44, 67, 88], "publishing": [26], "an": [27], "encomium": [28], "on": [29], "Euler's": [30, 86], "Institutiones": [31, 87], "(1755).": [32], "While": [33], "we": [34, 39, 48], "agree": [35], "with": [36], "that": [38, 50, 76], "shall": [40], "all": [41], "do": [42], "well": [43], "studying": [45], "masters,": [47], "argue": [49], "to": [51], "derive": [52], "full": [54], "benefit,": [55], "one": [56], "must": [57], "read": [58], "historically": [59], "important": [60], "texts": [61], "without": [62], "interposing": [63], "lens": [65], "formed": [66], "one's": [68], "mathematical": [70], "accomplishments.": [71], "We": [72], "show,": [73], "particular,": [75], "misses": [78], "much": [79], "style": [82], "and": [83], "substance": [84], "text": [91], "through": [92], "constructivist": [94], "lens.": [95]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 95, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 81, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+s\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Wed Apr  3 20:33:46 2024]   Something wrong with cleaning {"This": [0], "paper": [1], "treats": [2], "flexible": [3, 21, 41, 56], "polyhedra": [4], "in": [5, 32, 45, 58, 93], "the": [6, 14, 29, 33, 60, 70, 89, 107], "hyperbolic": [7, 46, 94], "3-space": [8], "\u210d3.": [9], "It": [10], "is": [11, 27], "proved": [12], "that": [13], "geometric": [15], "characterization": [16], "of": [17, 22, 54, 91, 98, 109], "octahedra": [18, 42, 57, 101], "being": [19], "infinitesimally": [20], "orders": [23], "1": [24], "or": [25], "2": [26, 65], "quite": [28], "same": [30], "as": [31], "Euclidean": [34, 37], "case.": [35], "Also": [36], "results": [38], "concerning": [39], "continuously": [40, 55], "remain": [43], "valid": [44], "geometry:": [47], "There": [48], "are": [49], "at": [50], "least": [51], "three": [52, 85], "types": [53], "#x210D;3;": [59], "line-symmetric": [61], "Type": [62, 64, 72, 79, 99], "1,": [63], "with": [66, 74, 106], "planar": [67], "symmetry,": [68], "and": [69], "non-symmetric": [71], "3": [73, 80, 100], "two": [75], "flat": [76], "positions.": [77], "However,": [78], "can": [81, 102], "be": [82, 104], "subdivided": [83], "into": [84], "subclasses": [86], "according": [87], "to": [88], "type": [90], "circles": [92], "geometry.": [95], "The": [96], "flexibility": [97], "again": [103], "argued": [105], "aid": [108], "Ivory\u2019s": [110], "Theorem.": [111]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 95, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 81, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 95, in __load
+    args, kwargs = self.__args, self.__kwargs
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__args'
+
+
+[Wed Apr  3 20:34:43 2024]   996 abstracts inserted in 69.2 sec, overall it's 14.4 abstracts/sec
+[Wed Apr  3 20:35:38 2024]   1000 abstracts inserted in 55.6 sec, overall it's 18.0 abstracts/sec
+[Wed Apr  3 20:36:33 2024]   1000 abstracts inserted in 55.0 sec, overall it's 18.2 abstracts/sec
+[Wed Apr  3 20:37:30 2024]   1000 abstracts inserted in 57.1 sec, overall it's 17.5 abstracts/sec
+[Wed Apr  3 20:38:41 2024]   1000 abstracts inserted in 70.1 sec, overall it's 14.3 abstracts/sec
+[Wed Apr  3 20:39:51 2024]   1000 abstracts inserted in 70.1 sec, overall it's 14.3 abstracts/sec
+[Wed Apr  3 20:40:56 2024]   1000 abstracts inserted in 65.1 sec, overall it's 15.4 abstracts/sec
+[Wed Apr  3 20:41:49 2024]   1000 abstracts inserted in 53.0 sec, overall it's 18.9 abstracts/sec
+[Wed Apr  3 20:42:40 2024]   1000 abstracts inserted in 50.9 sec, overall it's 19.6 abstracts/sec
+[Wed Apr  3 20:43:32 2024]   1000 abstracts inserted in 52.2 sec, overall it's 19.2 abstracts/sec
+[Wed Apr  3 20:44:25 2024]   1000 abstracts inserted in 53.2 sec, overall it's 18.8 abstracts/sec
+[Wed Apr  3 20:45:21 2024]   1000 abstracts inserted in 55.9 sec, overall it's 17.9 abstracts/sec
+[Wed Apr  3 20:46:14 2024]   1000 abstracts inserted in 52.6 sec, overall it's 19.0 abstracts/sec
+[Wed Apr  3 20:47:06 2024]   1000 abstracts inserted in 52.3 sec, overall it's 19.1 abstracts/sec
+[Wed Apr  3 20:47:57 2024]   1000 abstracts inserted in 51.2 sec, overall it's 19.5 abstracts/sec
+[Wed Apr  3 20:48:56 2024]   1000 abstracts inserted in 58.6 sec, overall it's 17.1 abstracts/sec
+[Wed Apr  3 20:49:53 2024]   1000 abstracts inserted in 57.8 sec, overall it's 17.3 abstracts/sec
+[Wed Apr  3 20:50:46 2024]   1000 abstracts inserted in 52.6 sec, overall it's 19.0 abstracts/sec
+[Wed Apr  3 20:51:41 2024]   1000 abstracts inserted in 54.8 sec, overall it's 18.2 abstracts/sec
+[Wed Apr  3 20:52:33 2024]   1000 abstracts inserted in 52.3 sec, overall it's 19.1 abstracts/sec
+[Wed Apr  3 20:53:31 2024]   1000 abstracts inserted in 57.4 sec, overall it's 17.4 abstracts/sec
+[Wed Apr  3 20:54:26 2024]   1000 abstracts inserted in 55.8 sec, overall it's 17.9 abstracts/sec
+[Wed Apr  3 20:55:20 2024]   1000 abstracts inserted in 53.9 sec, overall it's 18.6 abstracts/sec
+[Wed Apr  3 20:56:15 2024]   1000 abstracts inserted in 54.5 sec, overall it's 18.3 abstracts/sec
+[Wed Apr  3 20:57:13 2024]   1000 abstracts inserted in 57.7 sec, overall it's 17.3 abstracts/sec
+[Wed Apr  3 20:57:18 2024]   107 abstracts inserted in 5.9 sec, overall it's 18.1 abstracts/sec
+[Wed Apr  3 20:57:19 2024]   Finally 100.0% (25103 from 25107) abstracts inserted in 1424.8000000000002 sec

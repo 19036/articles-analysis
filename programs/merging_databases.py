@@ -1,12 +1,19 @@
 import sqlite3
 import sys, os, time
+from helpfun import write_logs_by_curr_time
 
-db_path_from = '../local_db/articles.db'
+# db_path_from = '../databases/local_db/articles.db'
+db_path_from = '../databases/articles.db'
 table_name_from = 'articles'
-db_path_to = '../../main_db/articles.db'
+# db_path_to = '../databases/articles.db'
+# db_path_to = '../databases/sob_articles.db'
+db_path_to = '../databases/nsu_articles.db'
 table_name_to = 'articles'
 
 logs_path = ('../logs/merge_tables/' + time.ctime().replace(' ', '___') + '_merge.txt').replace(':', '-')
+
+def write_logs(message:str, time_data=True):
+    write_logs_by_curr_time(message, time_data, logs_path)
 
 try:
     conn_from = sqlite3.connect(db_path_from)
@@ -34,24 +41,14 @@ except:
 #     publication_year INT,
 #     keywords_oa TEXT,
 #     topics_oa TEXT,
-#     level INT
+#     level INT,
+#     cleaned_abstract TEXT
 # )
 # """)
 # cursor_from.execute('''
 #                     ALTER TABLE articles
 #                     ADD cleaned_abstract TEXT
 #                     ''')
-
-def write_logs(message:str, time_data=True):
-    
-    global logs_path
-    s = ''
-    if time_data:
-        s = f'[{time.ctime()}]   '
-    s += message + '\n'
-    with open(logs_path, 'a') as f:
-        f.write(s)
-    print(s)
 
 
 def merge_tables():
@@ -66,6 +63,7 @@ def merge_tables():
     cursor_from.execute(f'''
                         SELECT *
                         FROM {table_name_from}
+                        WHERE level = 1
                         ''')
     
     results = cursor_from.fetchall()
@@ -112,7 +110,7 @@ def merge_tables():
 
 if __name__ == '__main__':
     
-    # merge_tables()
+    merge_tables()
     
     
     pass

@@ -1,0 +1,47 @@
+
+Start cleaning abstracts of level_1 articles
+
+[Wed Apr  3 17:24:36 2024]   Something wrong with cleaning {"The": [0, 70], "binomial": [1, 57], "coefficient": [2], "of": [3, 12, 19, 31, 51, 59, 73, 85, 89, 91, 102, 110, 113, 125, 137, 151, 154], "two": [4, 32, 111], "words": [5, 33, 39, 49, 116, 120], "u": [6], "and": [7, 41, 61, 63, 66, 117], "v": [8, 14, 50, 62, 67], "is": [9, 163], "the": [10, 28, 35, 56, 83, 99, 107, 129, 135, 139, 142, 149], "number": [11, 84], "times": [13], "occurs": [15], "as": [16], "a": [17], "subsequence": [18], "u.": [20], "Based": [21], "on": [22], "this": [23], "classical": [24], "notion,": [25], "we": [26], "introduce": [27], "m-binomial": [29, 71, 86, 103, 108], "equivalence": [30, 87], "refining": [34], "abelian": [36], "equivalence.": [37, 104], "Two": [38], "x": [40, 60, 77], "y": [42, 65], "are": [43, 68, 122], "m-binomially": [44], "equivalent,": [45], "if,": [46], "for": [47], "all": [48, 138], "length": [52, 92], "at": [53], "most": [54], "m,": [55], "coefficients": [58], "respectively,": [64], "equal.": [69], "complexity": [72, 109, 162], "an": [74, 79, 155], "infinite": [75, 156], "word": [76, 158], "maps": [78], "integer": [80], "n": [81, 93], "to": [82], "classes": [88, 112], "factors": [90], "occurring": [94], "in": [95], "x.": [96], "We": [97, 105, 146], "study": [98], "first": [100], "properties": [101], "compute": [106], "words:": [114], "Sturmian": [115], "(pure)": [118], "morphic": [119], "that": [121, 148], "fixed": [123], "points": [124], "Parikh-constant": [126], "morphisms": [127], "like": [128], "Thue\u2013Morse": [130], "word,": [131], "i.e.,": [132], "images": [133], "by": [134], "morphism": [136], "letters": [140], "have": [141], "same": [143], "Parikh": [144], "vector.": [145], "prove": [147], "frequency": [150], "each": [152], "symbol": [153], "recurrent": [157], "with": [159], "bounded": [160], "2-binomial": [161], "rational.": [164]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 92, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 75, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 75, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Wed Apr  3 17:24:36 2024]   Something wrong with cleaning {"Universal": [0], "coding": [1], "theory": [2], "is": [3], "surveyed": [4], "from": [5], "the": [6, 9], "viewpoint": [7], "of": [8], "interplay": [10], "between": [11], "delay": [12], "and": [13], "redundancy.": [14], "The": [15], "price": [16], "for": [17], "universality": [18], "turns": [19], "out": [20], "to": [21], "be": [22], "acceptably": [23], "small.": [24]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 92, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 78, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 75, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 75, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Wed Apr  3 17:25:51 2024]   998 abstracts inserted in 80.2 sec, overall it's 12.4 abstracts/sec
+[Wed Apr  3 17:26:57 2024]   1000 abstracts inserted in 66.8 sec, overall it's 15.0 abstracts/sec
+[Wed Apr  3 17:28:31 2024]   1000 abstracts inserted in 93.7 sec, overall it's 10.7 abstracts/sec
+[Wed Apr  3 17:29:24 2024]   1000 abstracts inserted in 53.0 sec, overall it's 18.9 abstracts/sec
+[Wed Apr  3 17:29:31 2024]   151 abstracts inserted in 7.3 sec, overall it's 20.7 abstracts/sec
+[Wed Apr  3 17:29:31 2024]   Finally 100.0% (4149 from 4151) abstracts inserted in 301.0 sec

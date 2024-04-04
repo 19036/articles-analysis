@@ -1,0 +1,32 @@
+[Wed Apr  3 08:54:36 2024]   Start downloading cite_works for level_1 in 4 thread(s)
+
+[Wed Apr  3 08:54:36 2024]   Number of articles to check: 7094
+[Wed Apr  3 08:54:36 2024]   Number of cite works estimation: 45231
+[Wed Apr  3 08:57:37 2024]   count: 500, downloaded: 5005, speed (check cites): 0.361 sec/article, request: 93.4%, db: 6.4, other: 0.2%
+
+[Wed Apr  3 09:00:25 2024]   count: 500, downloaded: 2979, speed (check cites): 0.336 sec/article, request: 95.1%, db: 4.7, other: 0.2%
+
+[Wed Apr  3 09:03:08 2024]   count: 500, downloaded: 2381, speed (check cites): 0.325 sec/article, request: 96.3%, db: 3.8, other: -0.1%
+
+[Wed Apr  3 09:05:40 2024]   count: 500, downloaded: 1451, speed (check cites): 0.307 sec/article, request: 96.9%, db: 2.7, other: 0.4%
+
+[Wed Apr  3 09:08:11 2024]   count: 500, downloaded: 1396, speed (check cites): 0.3 sec/article, request: 97.6%, db: 2.7, other: -0.3%
+
+[Wed Apr  3 09:10:46 2024]   count: 500, downloaded: 1368, speed (check cites): 0.309 sec/article, request: 97.2%, db: 2.7, other: 0.1%
+
+[Wed Apr  3 09:13:16 2024]   count: 500, downloaded: 971, speed (check cites): 0.301 sec/article, request: 97.5%, db: 2.3, other: 0.2%
+
+[Wed Apr  3 09:15:46 2024]   count: 500, downloaded: 964, speed (check cites): 0.3 sec/article, request: 97.5%, db: 2.6, other: -0.1%
+
+[Wed Apr  3 09:18:57 2024]   count: 500, downloaded: 1184, speed (check cites): 0.332 sec/article, request: 97.3%, db: 2.4, other: 0.3%
+
+[Wed Apr  3 09:22:26 2024]   count: 500, downloaded: 877, speed (check cites): 0.314 sec/article, request: 97.8%, db: 2.2, other: 0.0%
+
+[Wed Apr  3 09:26:15 2024]   count: 500, downloaded: 553, speed (check cites): 0.343 sec/article, request: 98.3%, db: 1.7, other: 0.0%
+
+[Wed Apr  3 09:30:25 2024]   count: 500, downloaded: 887, speed (check cites): 0.374 sec/article, request: 98.2%, db: 1.9, other: -0.1%
+
+[Wed Apr  3 09:33:37 2024]   count: 500, downloaded: 694, speed (check cites): 0.29 sec/article, request: 97.6%, db: 2.1, other: 0.3%
+
+[Wed Apr  3 09:45:04 2024]   count: 500, downloaded: 1472, speed (check cites): 0.388 sec/article, request: 97.6%, db: 2.4, other: 0.0%
+

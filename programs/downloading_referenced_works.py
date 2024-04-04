@@ -5,11 +5,13 @@ import json  # для конвертации словарь <--> строка: j
 import pyalex
 from threading import Thread, Lock
 from pyalex import Works
+from helpfun import write_logs_by_curr_time, sql_execute
 
 pyalex.config.email = "a.khramov@g.nsu.ru"
 
-db_path = '../local_db/articles.db'
-main_db_path = '../../main_db/articles.db'
+db_path = '../databases/local_db/articles.db'
+# db_path = '../databases/articles.db'
+db_path = '../databases/math_articles.db'
 logs_path = ('../logs/download_ref/' + time.ctime().replace(' ', '___') + '_ref_download.txt').replace(':', '-')
 requests_path = '../requests/ref_works_'
 number_of_threads = 4
@@ -32,7 +34,7 @@ CREATE TABLE IF NOT EXISTS articles (
     publication_year INT,
     keywords_oa TEXT,
     topics_oa TEXT,
-    level INT
+    level INT,
     cleaned_abstract TEXT
 )
 """)
@@ -40,15 +42,18 @@ CREATE TABLE IF NOT EXISTS articles (
 lock = Lock()
 
 def write_logs(message:str, time_data=True):
+    write_logs_by_curr_time(message, time_data, logs_path)
+
+# def write_logs(message:str, time_data=True):
     
-    global logs_path
-    s = ''
-    if time_data:
-        s = f'[{time.ctime()}]   '
-    s += message + '\n'
-    with open(logs_path, 'a') as f:
-        f.write(s)
-    print(s)
+#     global logs_path
+#     s = ''
+#     if time_data:
+#         s = f'[{time.ctime()}]   '
+#     s += message + '\n'
+#     with open(logs_path, 'a') as f:
+#         f.write(s)
+#     print(s)
 
 class Time_Check():
     
@@ -79,23 +84,6 @@ class Time_Check():
 time_check = Time_Check()
 
 
-def sql_requests():
-    
-    " Количество элементов, удовлетворяющих свойству "
-    t_start = time.time()
-    cursor.execute('''
-                    select id
-                    from articles
-                    where level = ? and title is ?
-                    ''', (1, 'null'))
-                   
-    ids = cursor.fetchall()
-    print(len(ids))
-    
-    print(f'Time: {round(time.time() - t_start, 1)}')
-    return ids
-    
-
 def work_parsing(work):
     
     # str: OpenAlexID
@@ -106,12 +94,14 @@ def work_parsing(work):
     
     # str: title
     title = work['title']
+    if title == 'Deleted Work':
+        return id_, None
     
     # str: authors ('a1, a2, a3')
     authors = ', '.join(list(map(lambda x: x['author']['display_name'], work['authorships'])))
     
     # str: referenced_works_ids ('id1, id2, id3')
-    referenced_works = ', '.join(list(map(lambda x: x.split('/')[-1], work['referenced_works'])))
+    referenced_works = json.dumps(list(map(lambda x: x.split('/')[-1], work['referenced_works'])))
     
     # int: cited_by_count
     cited_by_count = work['cited_by_count']
@@ -153,30 +143,46 @@ def compile_ref_works_ids_request(level=1):
     global requests_path
     req_path = requests_path + f'level_{level}_block_'
     sure = 0
-    # sure = 1
+    sure = 1
     if not sure:
         print('Are you sure??')
         ans = input()
         if ans not in ['1', 'y', 'yes', 'a']:
             return
     
-    try:
-        conn = sqlite3.connect(main_db_path, check_same_thread=False)
-        cursor = conn.cursor()
-    except:
-        print(f"Couldn't connect to database: {db_path}")
+    # try:
+    #     conn = sqlite3.connect(main_db_path, check_same_thread=False)
+    #     cursor = conn.cursor()
+    # except:
+    #     print(f"Couldn't connect to database: {db_path}")
     
-    " Количество элементов, удовлетворяющих свойству "
-    t_start = time.time()
-    cursor.execute('''
-                    SELECT referenced_works
-                    FROM articles
-                    WHERE level = ?
-                    ''', (level,))
+    # " Количество элементов, удовлетворяющих свойству "
+    # t_start = time.time()
+    # cursor.execute('''
+    #                 SELECT referenced_works
+    #                 FROM articles
+    #                 WHERE level = ?
+    #                 ''', (level,))
                     
-    ref_lists = cursor.fetchall()
+    # ref_lists = cursor.fetchall()
+    
+    request = '''
+                SELECT referenced_works
+                FROM articles
+                WHERE level = ?
+              '''
+    args = (level,)
+    response = sql_execute(request, args, path=main_db_path)
+    if 'error' in response:
+        s = f'request: {request}\nargs: {args}\n'
+        s += f'\n{response["error"]}'
+        write_logs(s)
+        return
+    
+    ref_lists = response['results']
+    t = round(response['time'], 1)
     print(f'Results: {len(ref_lists)}')
-    print(f'Time: {round(time.time() - t_start, 1)}')
+    print(f'Time: {t}')
     print('Start checking')
     num_already_exists = 0
     count_global = 1
@@ -214,7 +220,7 @@ def compile_ref_works_ids_request(level=1):
             print(f'{count_global} block compiled')
             count_global += 1
     path = f'{req_path}{count_global}.txt'
-    with open(path, 'a') as f:
+    with open(path, 'w') as f:
         f.write(ids[:-1])
     if count_global == 1:
         print(f'{count_global} block compiled from {count_local} ids')
@@ -222,11 +228,11 @@ def compile_ref_works_ids_request(level=1):
         print(f'Last ({count_global}) block compiled from {count_local} ids')
     print(f'num_already_exists = {num_already_exists}')
     
-    try:
-        conn.commit()
-        conn.close()
-    except:
-        pass
+    # try:
+    #     conn.commit()
+    #     conn.close()
+    # except:
+    #     pass
 
 
 def download_work_by_id(id_, level=1):
@@ -276,6 +282,11 @@ def download_work_by_id(id_, level=1):
         time_check.request += time.time() - t_start
     
     column_names, content = work_parsing(work)
+    if content is None:
+        s = f'Deleted work: id = {column_names}'
+        with lock:
+            write_logs(s)
+        return
     column_names = column_names[:-1] + ', level)'
     number_of_columns = len(content)
     question_string = '(' + '?, '*(number_of_columns + 1)
@@ -352,7 +363,7 @@ def download_works_by_ids_global(ids, level=1):
         thread.join()
         
 
-def update_ref_works_ids_request(req_path='../requests/ref_works_block_1.txt', level=1):
+def update_ref_works_ids_request(req_path='../requests/ref_works_level_1_block_1.txt', level=1):
     
     global db_path
     try:
@@ -417,7 +428,7 @@ def download_ref_works(name='', level=1):
     #         print('Ты чё?')
     #         return
     # req_path = req_path + name + '.txt'
-    req_path = '../requests/ref_works_block_1.txt'
+    req_path = '../requests/ref_works_level_1_block_1.txt'
     
     update_ref_works_ids_request(req_path, level)
     
@@ -433,7 +444,18 @@ def download_ref_works(name='', level=1):
             s = f'{traceback.format_exc()}\nRestarting..\n'
             write_logs(s)
     
+
+def check(id_):
     
+    w = Works()[id_]
+    return work_parsing(w)
+    # with open(req_path, 'r') as f:
+    #     s = f.read().split(' ')
+    # print(f'all: {len(s)}')
+    # print(f'unique: {len(set(s))}')
+
+
+
 
 if __name__ == '__main__':
     
@@ -441,7 +463,7 @@ if __name__ == '__main__':
     
     # download_ref_works(name)
     
-    # compile_ref_works_ids_request(2)
+    # compile_ref_works_ids_request(1)
     
     
     pass

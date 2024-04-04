@@ -1,0 +1,14 @@
+[Tue Apr  2 21:52:48 2024]
+request: SELECT COUNT(*) FROM articles WHERE title IS NULL
+args: ()
+count: 2108
+time: 46.7
+
+
+[Tue Apr  2 21:53:54 2024]
+request: SELECT COUNT(*) FROM articles WHERE title = ?
+args: ('null',)
+count: 1
+time: 29.1
+
+

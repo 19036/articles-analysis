@@ -5,10 +5,12 @@ import json  # для конвертации словарь <--> строка: j
 import pyalex
 import traceback
 from threading import Thread, Lock
+from helpfun import write_logs_by_curr_time as write_logs
 
 pyalex.config.email = "a.khramov@g.nsu.ru"
 
-db_path = '../../main_db/articles.db'
+# db_path = '../databases/articles.db'
+db_path = '../databases/math_articles.db'
 logs_path = ('../logs/download_cite/' + time.ctime().replace(' ', '___') + '_cite_download.txt').replace(':', '-')
 number_of_threads = 4
 try:
@@ -19,16 +21,16 @@ except:
     
 lock = Lock()
 
-def write_logs(message:str, time_data=True):
+# def write_logs(message:str, time_data=True):
     
-    global logs_path
-    s = ''
-    if time_data:
-        s = f'[{time.ctime()}]   '
-    s += message + '\n'
-    with open(logs_path, 'a') as f:
-        f.write(s)
-    print(s)
+#     global logs_path
+#     s = ''
+#     if time_data:
+#         s = f'[{time.ctime()}]   '
+#     s += message + '\n'
+#     with open(logs_path, 'a') as f:
+#         f.write(s)
+#     print(s)
 
 
 class Time_Check():
@@ -76,7 +78,7 @@ def work_parsing(work):
     authors = ', '.join(list(map(lambda x: x['author']['display_name'], work['authorships'])))
     
     # str: referenced_works_ids ('id1, id2, id3')
-    referenced_works = ', '.join(list(map(lambda x: x.split('/')[-1], work['referenced_works'])))
+    referenced_works = json.dumps(list(map(lambda x: x.split('/')[-1], work['referenced_works'])))
     
     # int: cited_by_count
     cited_by_count = work['cited_by_count']
@@ -192,7 +194,7 @@ def download_works_that_cite_this_work(id_, level=1):
                         time_check.db += time.time() - t_start
                         
     
-    cites_this_work = ', '.join(cites_this_work)
+    cites_this_work = json.dumps(cites_this_work)
     t_start = time.time()
     with lock:
         cursor = conn.cursor()
@@ -215,12 +217,10 @@ def download_works_that_cite_id_local(ids, level=1):
             time_check.count += 1
             
             time_check.all += time.time() - all_time
-            if time_check.count >= 10:
+            if time_check.count >= 500:
                 time_check.all = round(time_check.all, 1)
                 s = time_check.info()
                 write_logs(s)
-                if time_check.stop:
-                    return
                 time_check.clear()  
         all_time = time.time()
         
@@ -267,7 +267,7 @@ def download_works_that_cite_id_global(level=1):
 if __name__ == '__main__':
     
     
-    # download_works_that_cite_id_global(2)
+    download_works_that_cite_id_global(1)
     
     pass
     

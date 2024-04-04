@@ -1,0 +1,126 @@
+[Thu Apr  4 16:27:03 2024]
+Start clearing database: ../databases/math_articles.db
+Empty abstracts deleted in 11.4 sec
+Ref_lists updated in 50.5 sec
+Cite_lists updated in 31.2 sec
+
+
+
+[Thu Apr  4 18:35:37 2024]
+About topics_oa of sob articles:
+
+Domains:
+Physical Sciences: 125195
+Life Sciences: 8436
+Social Sciences: 7658
+Health Sciences: 4654
+Fields: 26
+    Mathematics: 38298
+    Computer Science: 32765
+    Physics and Astronomy: 26094
+    Engineering: 21896
+    Biochemistry, Genetics and Molecular Biology: 6419
+    Medicine: 4455
+    Decision Sciences: 2387
+    Economics, Econometrics and Finance: 2298
+    Earth and Planetary Sciences: 1873
+    Business, Management and Accounting: 1640
+    Materials Science: 1484
+    Chemistry: 1342
+    Social Sciences: 851
+    Environmental Science: 846
+    Immunology and Microbiology: 823
+    Agricultural and Biological Sciences: 677
+    Neuroscience: 491
+    Chemical Engineering: 490
+    Arts and Humanities: 245
+    Psychology: 237
+    Health Professions: 136
+    Energy: 107
+    Nursing: 34
+    Dentistry: 26
+    Pharmacology, Toxicology and Pharmaceutics: 26
+    Veterinary: 3
+Subfields: 221
+Topics: 2567
+
+
+
+[Thu Apr  4 18:35:44 2024]
+About topics_oa of nsu articles:
+
+Domains:
+Physical Sciences: 47372
+Life Sciences: 7320
+Health Sciences: 3217
+Social Sciences: 3005
+Fields: 26
+    Engineering: 12780
+    Physics and Astronomy: 10064
+    Materials Science: 6590
+    Chemistry: 5093
+    Biochemistry, Genetics and Molecular Biology: 4841
+    Earth and Planetary Sciences: 4649
+    Medicine: 3043
+    Computer Science: 3018
+    Mathematics: 2158
+    Environmental Science: 1499
+    Social Sciences: 1243
+    Agricultural and Biological Sciences: 1105
+    Chemical Engineering: 988
+    Neuroscience: 711
+    Energy: 533
+    Economics, Econometrics and Finance: 515
+    Arts and Humanities: 450
+    Immunology and Microbiology: 408
+    Psychology: 319
+    Pharmacology, Toxicology and Pharmaceutics: 255
+    Business, Management and Accounting: 250
+    Decision Sciences: 228
+    Health Professions: 78
+    Nursing: 69
+    Veterinary: 17
+    Dentistry: 10
+Subfields: 220
+Topics: 2621
+
+
+
+[Thu Apr  4 18:51:19 2024]
+About topics_oa of sob level_1 articles:
+
+Domains:
+Physical Sciences: 10656
+Social Sciences: 609
+Life Sciences: 296
+Health Sciences: 221
+Fields: 24
+    Mathematics: 3780
+    Computer Science: 3060
+    Engineering: 1999
+    Physics and Astronomy: 1443
+    Biochemistry, Genetics and Molecular Biology: 252
+    Medicine: 214
+    Economics, Econometrics and Finance: 213
+    Decision Sciences: 157
+    Earth and Planetary Sciences: 154
+    Business, Management and Accounting: 152
+    Materials Science: 68
+    Environmental Science: 61
+    Social Sciences: 60
+    Chemistry: 58
+    Chemical Engineering: 30
+    Agricultural and Biological Sciences: 20
+    Arts and Humanities: 18
+    Neuroscience: 18
+    Psychology: 9
+    Health Professions: 6
+    Immunology and Microbiology: 3
+    Energy: 3
+    Pharmacology, Toxicology and Pharmaceutics: 3
+    Dentistry: 1
+Subfields: 142
+Topics: 873
+
+
+

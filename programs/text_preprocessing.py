@@ -8,10 +8,12 @@ from threading import Thread, Lock
 # import textacy
 import spacy
 from textacy.preprocessing import normalize, remove, replace, make_pipeline
+from helpfun import write_logs_by_curr_time
+from helpfun import inv_index_by_abstract, abstract_by_inv_index, sql_execute
 
 load_model = spacy.load('en_core_web_sm', disable = ['parser','ner'])
 
-db_path = '../../main_db/articles.db'
+db_path = '../databases/math_articles.db'
 logs_path = ('../logs/preprocessing/' + time.ctime().replace(' ', '___') + '_abs_cleaning.txt').replace(':', '-')
 number_of_threads = 10
 lock = Lock()   
@@ -23,35 +25,38 @@ except:
 
 
 def write_logs(message:str, time_data=True):
+    write_logs_by_curr_time(message, time_data, logs_path)
+
+# def write_logs(message:str, time_data=True):
     
-    global logs_path
-    s = ''
-    if time_data:
-        s = f'[{time.ctime()}]   '
-    s += message + '\n'
-    with open(logs_path, 'a') as f:
-        f.write(s)
-    print(s)
+#     global logs_path
+#     s = ''
+#     if time_data:
+#         s = f'[{time.ctime()}]   '
+#     s += message + '\n'
+#     with open(logs_path, 'a') as f:
+#         f.write(s)
+#     print(s)
 
 
-def invert_abstract(inv_index):
-    " Выдаёт строку -- абстракт по abstract_inverted_index "
-    if inv_index is not None:
-        l_inv = [(w, p) for w, pos in inv_index.items() for p in pos]
-        return " ".join(map(lambda x: x[0], sorted(l_inv, key=lambda x: x[1])))
+# def invert_abstract(inv_index):
+#     " Выдаёт строку -- абстракт по abstract_inverted_index "
+#     if inv_index is not None:
+#         l_inv = [(w, p) for w, pos in inv_index.items() for p in pos]
+#         return " ".join(map(lambda x: x[0], sorted(l_inv, key=lambda x: x[1])))
 
-def inverted_index(text):
-    " Выдаёт словарь -- inverted_index по тексту (list of words) "
-    if type(text) == str:
-        text = text.split(' ')
-    elif type(text) != list:
-        write_logs(f'Unsupported type of text: {text}')
-        return
-    inv_index = {}
-    for word in text:
-        if word not in inv_index:
-            inv_index[word] = [i for i in range(len(text)) if text[i] == word]
-    return inv_index
+# def inverted_index(text):
+#     " Выдаёт словарь -- inverted_index по тексту (list of words) "
+#     if type(text) == str:
+#         text = text.split(' ')
+#     elif type(text) != list:
+#         write_logs(f'Unsupported type of text: {text}')
+#         return
+#     inv_index = {}
+#     for word in text:
+#         if word not in inv_index:
+#             inv_index[word] = [i for i in range(len(text)) if text[i] == word]
+#     return inv_index
 
 
 def preprocessing(text:str):
@@ -82,9 +87,9 @@ def clean_single_abstract(abstract:str):
             return
         reproc = make_pipeline(
                 json.loads,
-                invert_abstract,
+                abstract_by_inv_index,
                 preprocessing,
-                inverted_index,
+                inv_index_by_abstract,
                 json.dumps
                 )
         return reproc(abstract)
@@ -125,18 +130,36 @@ def clean_abstracts_global(level=1):
     t_global = 0
     t_start_local = time.time()
     
-    cursor.execute('''
-                   SELECT id, abstract
-                   FROM articles
-                   WHERE level = ?
-                   AND abstract IS NOT NULL
-                   AND abstract != ?
-                   AND cleaned_abstract IS NULL
-                   ''', (level, 'null'))
+    request = '''
+                    SELECT id, abstract
+                    FROM articles
+                    WHERE level = ?
+                    AND abstract IS NOT NULL
+                    AND abstract != ?
+                    AND cleaned_abstract IS NULL
+                    '''
+    args = (level, 'null')
+    
+    response = sql_execute(request, args, size=step)
+    # cursor.execute('''
+    #                SELECT id, abstract
+    #                FROM articles
+    #                WHERE level = ?
+    #                AND abstract IS NOT NULL
+    #                AND abstract != ?
+    #                AND cleaned_abstract IS NULL
+    #                ''', (level, 'null'))
     # raw_data = cursor.fetchall()
     # print(len(raw_data))
     # return
-    raw_data = cursor.fetchmany(step)
+    # raw_data = cursor.fetchmany(step)
+    if 'error' in response:
+        s = f'request: {request}\nargs: {args}\n'
+        s += f'\n{response["error"]}'
+        write_logs(s)
+        return
+    
+    raw_data = response['results']
     raw_data = [[id_, abstract, None] for id_, abstract in raw_data]
     while raw_data is not None and raw_data != []:
         
@@ -177,15 +200,29 @@ def clean_abstracts_global(level=1):
         count_global += len(raw_data)
         count_global_succ += count
         count = 0
-        cursor.execute('''
-                       SELECT id, abstract
-                       FROM articles
-                       WHERE level = ?
-                       AND abstract IS NOT NULL
-                       AND abstract != ?
-                       AND cleaned_abstract IS NULL
-                       ''', (level, 'null'))
-        raw_data = cursor.fetchmany(step)
+        
+        request = '''
+                        SELECT id, abstract
+                        FROM articles
+                        WHERE level = ?
+                        AND abstract IS NOT NULL
+                        AND abstract != ?
+                        AND cleaned_abstract IS NULL
+                        '''
+        args = (level, 'null')
+        
+        response = sql_execute(request, args, size=step)
+        
+        # cursor.execute('''
+        #                SELECT id, abstract
+        #                FROM articles
+        #                WHERE level = ?
+        #                AND abstract IS NOT NULL
+        #                AND abstract != ?
+        #                AND cleaned_abstract IS NULL
+        #                ''', (level, 'null'))
+        # raw_data = cursor.fetchmany(step)
+        raw_data = response['results']
         raw_data = [[id_, abstract, None] for id_, abstract in raw_data]
     
     if count_global == 0:
@@ -204,7 +241,7 @@ def clean_abstracts_global(level=1):
 
 if __name__ == '__main__':
     
-    # clean_abstracts_global()
+    clean_abstracts_global(2)
     
     pass
 
