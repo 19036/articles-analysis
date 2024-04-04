@@ -1,0 +1,82 @@
+
+Start cleaning abstracts of level = 1 articles
+
+[Fri Mar 29 21:00:48 2024]   Something wrong with cleaning {"GWAS": [0], "have": [1], "identified": [2], ">200": [3], "risk": [4, 87], "loci": [5], "for": [6, 82], "Inflammatory": [7], "Bowel": [8], "Disease": [9], "(IBD).": [10], "The": [11], "majority": [12], "of": [13, 61, 84, 105, 146], "disease": [14, 80, 114], "associations": [15], "are": [16, 31, 55, 93], "known": [17], "to": [18, 142], "be": [19, 140], "driven": [20], "by": [21, 33, 57], "regulatory": [22, 59, 75], "variants.": [23], "To": [24], "identify": [25, 48, 74], "the": [26, 79, 85, 106, 144], "putative": [27], "causative": [28, 129], "genes": [29, 110, 148], "that": [30, 53, 77, 91, 125, 134], "perturbed": [32], "these": [34, 54, 92, 100], "variants,": [35], "we": [36, 102], "generate": [37], "a": [38], "large": [39], "transcriptome": [40], "data": [41], "set": [42], "(nine": [43], "disease-relevant": [44], "cell": [45], "types)": [46], "and": [47, 68, 89, 117, 120], "23,650": [49], "cis-eQTL.": [50], "We": [51, 73], "show": [52, 90, 121], "determined": [56], "\u223c9720": [58], "modules,": [60], "which": [62], "\u223c3000": [63], "operate": [64], "in": [65, 95, 111], "multiple": [66, 71], "tissues": [67], "\u223c970": [69], "on": [70, 99], "genes.": [72, 130], "modules": [76], "drive": [78], "association": [81], "63": [83], "200": [86], "loci,": [88], "enriched": [94], "multigenic": [96], "modules.": [97], "Based": [98], "analyses,": [101], "resequence": [103], "45": [104], "corresponding": [107], "100": [108], "candidate": [109], "6600": [112], "Crohn": [113], "(CD)": [115], "cases": [116], "5500": [118], "controls,": [119], "with": [122], "burden": [123], "tests": [124], "they": [126], "include": [127], "likely": [128], "Our": [131], "analyses": [132], "indicate": [133], "\u226510-fold": [135], "larger": [136], "sample": [137], "sizes": [138], "will": [139], "required": [141], "demonstrate": [143], "causality": [145], "individual": [147], "using": [149], "this": [150], "approach.": [151]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 90, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 76, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 95, in __load
+    args, kwargs = self.__args, self.__kwargs
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__args'
+
+
+[Fri Mar 29 21:00:48 2024]   Something wrong with cleaning {"This": [0], "paper": [1], "presents": [2], "an": [3, 130], "experimental": [4, 232], "and": [5, 27, 50, 79, 87, 163, 205], "theoretical": [6], "study": [7], "of": [8, 11, 44, 53, 64, 104, 113, 133, 138, 150, 203, 210], "the": [9, 20, 24, 28, 54, 61, 65, 68, 94, 98, 102, 121, 125, 139, 142, 155, 160, 166, 173, 178, 184, 191, 208, 211, 214, 231], "evaporation": [10, 70, 161, 168, 193, 212, 224], "a": [12, 201], "sessile": [13], "water": [14], "drop": [15, 66, 99, 115, 179, 185, 198, 215], "to": [16, 136, 148, 172, 183, 219], "open": [17], "atmosphere": [18, 29], "when": [19, 213], "temperature": [21, 95, 122, 134], "difference": [22], "between": [23], "solid": [25], "substrate": [26], "is": [30, 58, 91, 129, 170, 181, 200, 226], "about": [31], "40": [32], "\u00b0C.": [33], "Using": [34], "substrates": [35], "with": [36, 77, 116, 230], "different": [37], "wettability": [38], "we": [39], "investigate": [40], "all": [41], "three": [42], "modes": [43], "droplet": [45, 126, 140], "evaporation:": [46], "pinning,": [47], "partial": [48], "pinning": [49], "depinning.": [51], "One": [52], "most": [55], "important": [56], "results": [57], "that": [59, 165], "at": [60, 207], "final": [62], "stage": [63], "life": [67], "specific": [69, 192, 223], "rate": [71, 162, 169, 194, 196, 225], "abruptly": [72], "increases": [73], "especially": [74], "for": [75], "drops": [76], "small": [78], "moderate": [80], "contact": [81, 143, 156, 174, 186, 216], "angle": [82], "hysteresis.": [83], "The": [84, 110, 221], "coupled": [85], "heat": [86, 111], "mass": [88, 152], "transfer": [89], "model": [90], "considered": [92], "where": [93], "field": [96], "on": [97, 107, 124], "surface": [100], "determines": [101], "distribution": [103, 123], "vapor": [105], "concentration": [106], "liquid\u2013gas": [108], "interface.": [109], "exchange": [112], "liquid": [114], "gas": [117], "phase": [118], "strongly": [119], "affects": [120], "surface.": [127], "There": [128], "appreciable": [131], "increase": [132], "close": [135], "periphery": [137], "near": [141, 154], "line.": [144, 157], "And": [145], "this": [146], "leads": [147], "increasing": [149], "evaporative": [151], "flux": [153], "We": [158], "calculate": [159], "conclude": [164], "global": [167], "proportional": [171, 182], "radius": [175, 187, 217], "rb": [176], "while": [177], "area": [180], "squared": [188], "rb2.": [189], "Thus,": [190], "(evaporation": [195], "per": [197], "area)": [199], "function": [202], "1/rb": [204], "diverges": [206], "end": [209], "tends": [218], "zero.": [220], "calculated": [222], "in": [227], "excellent": [228], "agreement": [229], "data.": [233]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 90, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 76, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Fri Mar 29 21:00:48 2024]   Something wrong with cleaning {"Self-activated": [0], "yellow-emitting": [1], "BaLuAl<sub>x</sub>Zn<sub>4\u2212x</sub>O<sub>7\u2212(1\u2212x)/2</sub>phosphor": [2], "has": [3], "been": [4], "investigated": [5], "by": [6], "a": [7], "combined": [8], "experimental": [9], "and": [10], "theoretical": [11], "analysis.": [12]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 90, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 76, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Fri Mar 29 21:00:48 2024]   Something wrong with cleaning {"The": [0, 52, 78, 89], "ratio": [1], "of": [2, 18, 35, 45, 64, 83], "the": [3, 16, 19, 33, 36, 39, 47, 57], "elastic": [4], "${e}^{+}p$": [5], "to": [6, 23, 31], "${e}^{\\ensuremath{-}}p$": [7], "scattering": [8, 72], "cross": [9], "sections": [10], "has": [11], "been": [12], "measured": [13], "precisely,": [14], "allowing": [15], "determination": [17], "two-photon": [20, 86], "exchange": [21, 87], "contribution": [22, 28], "these": [24], "processes.": [25], "This": [26], "neglected": [27], "is": [29], "believed": [30], "be": [32], "cause": [34], "discrepancy": [37], "between": [38, 74], "Rosenbluth": [40], "and": [41, 66, 69, 76], "polarization": [42], "transfer": [43], "methods": [44], "measuring": [46], "proton": [48], "electromagnetic": [49], "form": [50], "factors.": [51], "experiment": [53], "was": [54], "performed": [55], "at": [56, 61, 70], "VEPP-3": [58], "storage": [59], "ring": [60], "beam": [62], "energies": [63], "1.6": [65], "1.0": [67], "GeV": [68], "lepton": [71], "angles": [73], "15\\ifmmode^\\circ\\else\\textdegree\\fi{}": [75], "105\\ifmmode^\\circ\\else\\textdegree\\fi{}.": [77], "data": [79], "obtained": [80], "show": [81], "evidence": [82], "a": [84], "significant": [85], "effect.": [88], "results": [90], "are": [91], "compared": [92], "with": [93], "several": [94], "theoretical": [95], "predictions.": [96]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 90, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 76, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Fri Mar 29 21:01:48 2024]   974 abstracts cleaned in 62.9 sec, start inserting in database..
+[Fri Mar 29 21:01:57 2024]   974 abstracts inserted in 9.4 sec, it's 106.4 abstracts/sec
+[Fri Mar 29 21:01:57 2024]   Finally 1.0% (974 from 1000) abstracts inserted in 72.3 sec

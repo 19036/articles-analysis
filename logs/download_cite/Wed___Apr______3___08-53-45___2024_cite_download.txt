@@ -1,0 +1,26 @@
+[Wed Apr  3 08:53:45 2024]   Start downloading cite_works for level_1 in 4 thread(s)
+
+[Wed Apr  3 08:53:45 2024]   Number of articles to check: 7207
+[Wed Apr  3 08:53:45 2024]   Number of cite works estimation: 47777
+[Wed Apr  3 08:53:50 2024]   count: 10, downloaded: 8, speed (check cites): 0.26 sec/article, request: 144.6%, db: 3.8, other: -48.4%
+
+[Wed Apr  3 08:53:53 2024]   count: 10, downloaded: 58, speed (check cites): 0.318 sec/article, request: 107.4%, db: 5.8, other: -13.2%
+
+[Wed Apr  3 08:53:57 2024]   count: 10, downloaded: 160, speed (check cites): 0.51 sec/article, request: 59.6%, db: 7.5, other: 32.9%
+
+[Wed Apr  3 08:54:00 2024]   count: 10, downloaded: 208, speed (check cites): 0.287 sec/article, request: 116.8%, db: 19.8, other: -36.6%
+
+[Wed Apr  3 08:54:04 2024]   count: 10, downloaded: 229, speed (check cites): 0.277 sec/article, request: 123.6%, db: 18.6, other: -42.2%
+
+[Wed Apr  3 08:54:08 2024]   count: 10, downloaded: 63, speed (check cites): 0.472 sec/article, request: 66.0%, db: 5.2, other: 28.8%
+
+[Wed Apr  3 08:54:11 2024]   count: 10, downloaded: 68, speed (check cites): 0.408 sec/article, request: 73.4%, db: 4.0, other: 22.6%
+
+[Wed Apr  3 08:54:15 2024]   count: 10, downloaded: 231, speed (check cites): 0.31 sec/article, request: 112.3%, db: 22.0, other: -34.3%
+
+[Wed Apr  3 08:54:19 2024]   count: 10, downloaded: 162, speed (check cites): 0.467 sec/article, request: 72.3%, db: 9.4, other: 18.3%
+
+[Wed Apr  3 08:54:23 2024]   count: 10, downloaded: 160, speed (check cites): 0.295 sec/article, request: 115.7%, db: 11.1, other: -26.8%
+
+[Wed Apr  3 08:54:26 2024]   count: 10, downloaded: 25, speed (check cites): 0.378 sec/article, request: 87.6%, db: 3.1, other: 9.3%
+

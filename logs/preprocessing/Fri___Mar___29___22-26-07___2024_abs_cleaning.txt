@@ -1,0 +1,15 @@
+
+Start cleaning abstracts of level_1 articles
+
+[Fri Mar 29 22:27:23 2024]   917 abstracts inserted in 75.7 sec, overall it's 12.1 abstracts/sec
+[Fri Mar 29 22:28:26 2024]   845 abstracts inserted in 62.6 sec, overall it's 13.5 abstracts/sec
+[Fri Mar 29 22:29:33 2024]   760 abstracts inserted in 67.5 sec, overall it's 11.3 abstracts/sec
+[Fri Mar 29 22:30:52 2024]   665 abstracts inserted in 78.8 sec, overall it's 8.4 abstracts/sec
+[Fri Mar 29 22:31:54 2024]   564 abstracts inserted in 62.4 sec, overall it's 9.0 abstracts/sec
+[Fri Mar 29 22:33:06 2024]   491 abstracts inserted in 72.2 sec, overall it's 6.8 abstracts/sec
+[Fri Mar 29 22:33:38 2024]   390 abstracts inserted in 31.5 sec, overall it's 12.4 abstracts/sec
+[Fri Mar 29 22:34:05 2024]   339 abstracts inserted in 26.9 sec, overall it's 12.6 abstracts/sec
+[Fri Mar 29 22:34:25 2024]   260 abstracts inserted in 20.4 sec, overall it's 12.7 abstracts/sec
+[Fri Mar 29 22:34:39 2024]   203 abstracts inserted in 14.1 sec, overall it's 14.4 abstracts/sec
+[Fri Mar 29 22:34:54 2024]   174 abstracts inserted in 14.2 sec, overall it's 12.3 abstracts/sec
+[Fri Mar 29 22:35:05 2024]   155 abstracts inserted in 11.1 sec, overall it's 14.0 abstracts/sec

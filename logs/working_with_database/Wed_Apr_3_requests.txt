@@ -1,0 +1,42 @@
+[Wed Apr  3 19:52:36 2024]
+request: SELECT cited_by_count FROM articles WHERE level = ?
+args: (2,)
+sum: 9451902
+time: 0.3
+
+
+[Wed Apr  3 19:52:45 2024]
+request: SELECT cited_by_count FROM articles WHERE level = ?
+args: (1,)
+sum: 47792
+time: 0.3
+
+
+[Wed Apr  3 19:53:05 2024]
+request: SELECT referenced_works FROM articles WHERE level = ?
+args: (1,)
+sum: 1064493
+time: 0.3
+
+
+[Wed Apr  3 19:53:11 2024]
+request: SELECT referenced_works FROM articles WHERE level = ?
+args: (2,)
+sum: 18872947
+time: 0.4
+
+
+[Wed Apr  3 20:13:13 2024]
+request: SELECT COUNT(*) FROM articles WHERE title = ? OR title IS NULL
+args: ('null',)
+count: 608
+time: 0.2
+
+
+[Wed Apr  3 20:13:29 2024]
+request: SELECT COUNT(*) FROM articles WHERE abstract = ? OR abstract IS NULL
+args: ('null',)
+count: 15159
+time: 0.5
+
+

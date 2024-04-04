@@ -1,0 +1,8 @@
+[Tue Apr  2 15:44:35 2024]
+Doc2Vec model on training_data: level_1 trained (traditional way) in 167.4 sec
+
+
+[Tue Apr  2 16:17:34 2024]
+Doc2Vec model on training_data: level_1 trained (traditional way) in 164.0 sec
+
+

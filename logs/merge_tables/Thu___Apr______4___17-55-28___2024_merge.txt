@@ -1,0 +1,5 @@
+Start merging tables:
+From ../databases/articles.db, articles to ../databases/nsu_articles.db, articles
+
+[Thu Apr  4 17:57:57 2024]   Got values in 148.2 sec
+[Thu Apr  4 17:57:58 2024]   Merged in 1.8 sec

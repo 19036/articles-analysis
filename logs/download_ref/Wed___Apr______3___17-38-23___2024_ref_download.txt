@@ -1,0 +1,147 @@
+[Wed Apr  3 17:38:26 2024]   Start downloading works_by_ids for level_1 in 4 thread(s)
+
+[Wed Apr  3 17:38:27 2024]   Deleted work: id = W4285719527
+[Wed Apr  3 17:38:27 2024]   Problem with getting article with id = W2051356827
+urllib3.exceptions.ResponseError: too many 429 error responses
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\connectionpool.py", line 938, in urlopen
+    retries = retries.increment(method, url, response=response, _pool=self)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2051356827 (Caused by ResponseError('too many 429 error responses'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 267, in download_work_by_id
+    work = Works()[id_]
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 257, in _get_from_url
+    res = _get_requests_session().get(url, auth=OpenAlexAuth(config))
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 510, in send
+    raise RetryError(e, request=request)
+requests.exceptions.RetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2051356827 (Caused by ResponseError('too many 429 error responses'))
+
+
+[Wed Apr  3 17:38:27 2024]   Problem with getting article with id = W2468144410
+urllib3.exceptions.ResponseError: too many 429 error responses
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\connectionpool.py", line 938, in urlopen
+    retries = retries.increment(method, url, response=response, _pool=self)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2468144410 (Caused by ResponseError('too many 429 error responses'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 267, in download_work_by_id
+    work = Works()[id_]
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 257, in _get_from_url
+    res = _get_requests_session().get(url, auth=OpenAlexAuth(config))
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 510, in send
+    raise RetryError(e, request=request)
+requests.exceptions.RetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2468144410 (Caused by ResponseError('too many 429 error responses'))
+
+
+[Wed Apr  3 17:38:27 2024]   Problem with getting article with id = W2483050148
+urllib3.exceptions.ResponseError: too many 429 error responses
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\connectionpool.py", line 938, in urlopen
+    retries = retries.increment(method, url, response=response, _pool=self)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2483050148 (Caused by ResponseError('too many 429 error responses'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 267, in download_work_by_id
+    work = Works()[id_]
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 257, in _get_from_url
+    res = _get_requests_session().get(url, auth=OpenAlexAuth(config))
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 510, in send
+    raise RetryError(e, request=request)
+requests.exceptions.RetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2483050148 (Caused by ResponseError('too many 429 error responses'))
+
+
+[Wed Apr  3 17:38:28 2024]   Problem with adding article with id = W2950550249
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 296, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+
+[Wed Apr  3 17:38:28 2024]   Deleted work: id = W4285719527
+[Wed Apr  3 17:38:28 2024]   Problem with getting article with id = W2997285553
+urllib3.exceptions.ResponseError: too many 429 error responses
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\connectionpool.py", line 938, in urlopen
+    retries = retries.increment(method, url, response=response, _pool=self)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2997285553 (Caused by ResponseError('too many 429 error responses'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 267, in download_work_by_id
+    work = Works()[id_]
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 257, in _get_from_url
+    res = _get_requests_session().get(url, auth=OpenAlexAuth(config))
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\adapters.py", line 510, in send
+    raise RetryError(e, request=request)
+requests.exceptions.RetryError: HTTPSConnectionPool(host='api.openalex.org', port=443): Max retries exceeded with url: /works/W2997285553 (Caused by ResponseError('too many 429 error responses'))
+
+

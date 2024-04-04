@@ -1,0 +1,95 @@
+
+Start cleaning abstracts of level_1 articles
+
+[Fri Mar 29 22:37:00 2024]   Something wrong with cleaning {"Bifunctional": [0], "dithiolene": [1, 80, 124], "ligands": [2], "have": [3, 135], "been": [4, 41, 136], "coordinated": [5], "to": [6, 10, 93, 183, 185, 215], "the": [7, 19, 47, 51, 73, 78, 98, 115, 123, 152, 191, 199, 218, 227, 239], "MoV(O)(\u03bc-S2)MoV(O)": [8], "unit": [9], "afford": [11, 186], "[Mo2O2(\u03bc-S)2(BPyDTS2)2]22\u2212": [12], "(12\u2212)": [13], "(BPyDTS2": [14], "(2-bis-(2-pyridyl)methylene-1,3-dithiolene)": [15], "dianions.": [16], "Reaction": [17], "of": [18, 29, 49, 77, 114, 122, 129, 160, 168, 179, 206, 217, 233, 238], "12\u2212": [20, 148, 184, 220, 240], "molybdenum": [21], "dimer": [22], "with": [23, 156, 171, 226], "pentacarbonylchlorothenium(I)": [24], "affords": [25], "a": [26, 57, 105, 157, 204, 211], "tetrametallic": [27, 100], "complex": [28, 38, 147], "formula": [30], "[Mo2O2(\u03bc-S)2(BPyDTS2)2{Re(CO)3Cl}2]2\u2212": [31], "(22\u2212).": [32], "The": [33, 126, 230], "monomeric": [34], "(CH3)2Sn(BPyDTS2)": [35], "(3)": [36], "tin": [37], "has": [39, 104], "also": [40], "prepared": [42], "for": [43], "comparative": [44], "purposes.": [45], "In": [46], "structure": [48, 108], "(Et4N)2[1],": [50], "two": [52, 64, 74, 85, 94, 111, 119, 180], "metal": [53], "atoms": [54, 76, 87, 96, 113, 121], "are": [55], "in": [56, 97, 133, 151, 223], "square": [58], "pyramidal": [59], "coordination": [60], "environment": [61], "defined": [62, 109], "by": [63, 110, 203], "bridging": [65], "sulfur": [66, 75, 120], "atoms,": [67], "one": [68], "terminal": [69], "oxygen": [70], "atom": [71], "and": [72, 118, 163, 194, 221, 241], "bifunctional": [79], "ligand.": [81, 125], "This": [82], "arrangement": [83], "leaves": [84], "nitrogen": [86], "on": [88, 141], "each": [89], "side": [90], "which": [91], "coordinate": [92], "Re": [95], "22\u2212": [99, 187, 222, 242], "complex.": [101], "Compound": [102, 208], "3": [103, 209, 234], "distorted": [106], "tetrahedral": [107], "carbon": [112], "methyl": [116], "groups": [117], "luminescence": [127], "properties": [128], "all": [130], "three": [131], "complexes": [132, 219], "acetonitrile": [134], "investigated.": [137], "Detailed": [138], "studies": [139], "supported": [140], "quantum": [142, 166, 200, 231], "mechanical": [143], "calculations": [144], "revealed": [145], "that": [146, 237], "shows": [149], "photoluminescence": [150], "600\u2013800": [153], "nm": [154, 162], "region": [155], "maximum": [158], "wavelength": [159], "628": [161], "an": [164, 172], "emission": [165, 192, 213], "yield": [167, 232], "0.092,": [169], "associated": [170], "intraligand": [173], "charge": [174], "transfer": [175], "(ILCT)": [176], "transition.": [177], "Coordination": [178], "Re(CO)3Cl": [181], "fragments": [182], "does": [188], "not": [189], "affect": [190], "spectrum": [193, 214], "shape": [195], "although": [196], "it": [197], "decreases": [198], "yield,": [201], "approximately": [202], "factor": [205], "4.6.": [207], "exhibits": [210], "similar": [212], "those": [216], "good": [224], "agreement": [225], "ILCT": [228], "assignment.": [229], "lies": [235], "between": [236], "complexes.": [243]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 90, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 76, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Fri Mar 29 22:37:00 2024]   Something wrong with cleaning {"Diamond": [0], "films": [1, 30, 74, 133], "are": [2], "advanced": [3], "engineering": [4], "materials": [5], "for": [6, 25, 242], "various": [7], "industrial": [8], "applications": [9], "requiring": [10], "a": [11, 81, 155, 164, 171, 227, 235], "coating": [12, 160, 276], "material": [13], "with": [14, 154, 226, 263], "extremely": [15], "high": [16], "thermal": [17], "conductivity": [18], "and": [19, 51, 56, 58, 69, 106, 117, 126, 144, 170, 185, 204, 207, 213, 251], "low": [20], "electrical": [21], "conductivity.": [22], "An": [23], "approach": [24], "the": [26, 109, 121, 124, 128, 131, 181, 186, 190, 198, 205, 246, 252, 260, 272, 280, 283], "synthesis": [27, 110, 247], "of": [28, 35, 49, 71, 84, 93, 101, 108, 120, 130, 167, 175, 180, 189, 221, 282], "diamond": [29, 73, 152, 191, 219, 265, 284], "via": [31], "high-speed": [32, 47], "jet": [33], "deposition": [34], "thermally": [36, 54], "activated": [37], "gas": [38], "has": [39], "been": [40], "applied.": [41], "In": [42, 269], "this": [43, 270], "method,": [44], "spatially": [45], "separated": [46], "flows": [48], "methane": [50, 90, 206], "hydrogen": [52, 59, 98, 172, 208], "were": [53, 61, 75, 78, 134, 161, 211, 232], "activated,": [55], "methyl": [57], "radicals": [60], "deposited": [62], "on": [63, 123, 234, 279], "heated": [64, 238], "molybdenum": [65], "substrates.": [66], "The": [67, 151, 178], "morphology": [68, 116], "structure": [70, 149], "three": [72], "studied,": [76], "which": [77], "synthesized": [79, 233], "at": [80, 163, 239], "heating": [82, 165, 199], "power": [83, 166, 200], "900,": [85], "1700,": [86], "or": [87, 95, 103], "1800": [88], "W,": [89], "flow": [91, 99, 173, 209], "rate": [92, 100, 174, 188], "10": [94], "30": [96, 212, 222], "sccm,": [97, 105, 215], "1500": [102, 176], "3500": [104, 214], "duration": [107, 248], "from": [111], "1.5": [112, 243], "to": [113, 257], "3": [114], "h.The": [115], "electronic": [118], "state": [119], "carbon": [122], "surface": [125, 230, 281], "in": [127, 224], "bulk": [129], "obtained": [132], "analyzed": [135], "by": [136], "scanning": [137], "electron": [138], "microscopy,": [139], "Raman": [140], "scattering,": [141], "X-ray": [142, 146], "photoelectron,": [143], "near-edge": [145], "absorption": [147], "fine": [148], "spectroscopies.": [150], "micro-crystals": [153], "thick": [156], "oxidized": [157], "amorphous": [158], "sp2-carbon": [159, 229, 275], "grown": [162], "900": [168], "W": [169, 203], "sccm.": [177], "quality": [179], "crystals": [182, 220, 266], "was": [183, 193, 201, 249, 255, 267, 277], "improved,": [184], "growth": [187], "film": [192, 262], "increased": [194], "seven": [195], "times": [196], "when": [197], "1700\u20131800": [202], "rates": [210], "respectively.": [216], "Defective": [217], "octahedral": [218], "\u03bcm": [223], "size": [225], "thin": [228], "layer": [231], "Mo": [236], "substrate": [237, 253], "1273": [240], "K": [241], "h.": [244], "When": [245], "doubled,": [250], "temperature": [254], "decreased": [256], "1073": [258], "K,": [259], "denser": [261], "rhombic-dodecahedron": [264], "grown.": [268], "case,": [271], "thinnest": [273], "hydrogenated": [274], "detected": [278], "crystals.": [285]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 90, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 76, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Fri Mar 29 22:37:00 2024]   Something wrong with cleaning {"A": [0], "decomposition": [1, 133], "of": [2, 23, 38, 47, 70, 87, 93, 101, 112, 163, 166], "the": [3, 7, 15, 21, 34, 45, 62, 68, 84, 94, 99, 107, 119, 127, 142, 146], "spin": [4, 9, 36, 39, 88, 96, 110, 124, 131, 148], "density": [5, 10, 13, 40, 97, 132, 140, 149], "into": [6], "net": [8, 35, 147], "and": [11, 73], "polarization": [12, 63, 139], "for": [14, 118, 126, 135], "unrestricted": [16], "Kohn\u2013Sham": [17], "(KS)": [18], "determinant": [19], "in": [20, 79, 106], "basis": [22, 32], "L\u00f6wdin\u2013Amos\u2013Hall": [24], "paired": [25], "orbitals": [26, 50], "(PO)": [27], "is": [28, 41, 65, 116], "derived.": [29], "In": [30, 59], "PO": [31], "set,": [33], "part": [37, 64], "only": [42], "determined": [43], "by": [44], "manifold": [46], "occupied": [48, 56], "\u03b1-spin": [49], "which": [51], "do": [52], "not": [53], "overlap": [54, 78], "with": [55, 67, 103, 109], "\u03b2-spin": [57], "orbitals.": [58, 75], "its": [60], "turn,": [61], "associated": [66], "pairs": [69, 81], "overlapping": [71], "\u03b1": [72], "\u03b2": [74], "The": [76, 130], "decreased": [77], "these": [80], "corresponds": [82], "to": [83, 172], "increased": [85], "degree": [86], "polarization.": [89], "As": [90], "an": [91], "example": [92], "developed": [95], "decomposition,": [98], "complex": [100, 137, 144], "FeO": [102, 156], "nitrobenzene": [104], "(taken": [105], "state": [108], "projection": [111], "Sz": [113], "=": [114], "2)": [115], "considered": [117], "B3LYP": [120], "solution": [121], "revealing": [122], "substantial": [123], "contamination": [125], "KS": [128], "determinant.": [129], "predicts": [134], "this": [136], "appreciable": [138], "over": [141], "whole": [143], "while": [145], "remains": [150], "counter": [151], "intuitive": [152], "almost": [153], "intact": [154], "at": [155], "center.": [157], "This": [158], "result": [159], "changes": [160], "presumed": [161], "mechanism": [162], "metal-to-ligand": [164], "transfer": [165], "unpaired": [167], "electrons": [168], "from": [169], "paramagnetic": [170], "center": [171], "diamagnetic": [173], "ligand": [174], "having": [175], "a": [176], "high": [177], "electron": [178], "affinity.": [179], "\u00a9": [180], "2012": [181], "Wiley": [182], "Periodicals,": [183], "Inc.": [184]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 90, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 76, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Fri Mar 29 22:37:00 2024]   Something wrong with cleaning {"Late": [0], "Mesozoic": [1, 66], "Upper": [2, 24, 71], "Amga": [3, 10, 25, 72], "alkaline": [4, 29, 67, 130], "rocks": [5], "are": [6], "located": [7], "in": [8, 62, 69, 119], "the": [9, 15, 23, 35, 45, 55, 70, 78, 88, 112, 120, 124, 129, 138, 161, 173], "tectonic": [11], "m\u00e9lange": [12], "zone": [13], "within": [14], "Aldan-Stanovoy": [16], "shield,": [17], "Russia.": [18], "The": [19, 40, 75, 107, 132], "main": [20, 125], "phases": [21, 127], "of": [22, 28, 77, 123, 128, 145, 176, 181], "complex": [26], "consist": [27], "syenite": [30, 79], "intrusions": [31, 80], "as": [32, 34], "well": [33], "lamprophyre": [36, 46, 89], "dikes": [37, 92], "and": [38, 57, 87, 91, 102, 116, 179], "sills.": [39], "mineralogical": [41], "features": [42], "indicate": [43], "that": [44, 137], "may": [47], "belong": [48], "to": [49, 153], "minette.": [50], "Recent": [51], "geological": [52], "works": [53], "revealed": [54], "linear": [56], "area-specific": [58], "geochemical": [59], "gold": [60, 73], "anomalies": [61], "association": [63], "with": [64, 156, 172], "late": [65], "magmatism": [68], "district.": [74], "age": [76], "is": [81, 109], "131.4": [82], "\u00b1": [83, 97, 100, 104, 169], "1.5": [84, 101], "(2.9)": [85], "Ma,": [86], "sills": [90], "were": [93, 140], "formed": [94, 141], "at": [95, 148], "134.9": [96], "1.6,": [98], "132.3": [99], "117.7": [103], "3.4": [105], "Ma.": [106], "mineralization": [108, 164], "represented": [110], "by": [111], "REE-Ti-Th,": [113], "polymetallic": [114], "(sulfide)": [115], "telluride-gold": [117, 163], "types": [118], "quartz-calcite-chlorite": [121], "alteration": [122], "magmatic": [126], "rocks.": [131], "fluid": [133], "inclusions": [134], "study": [135], "shows": [136], "sulfides": [139], "from": [142, 151, 166], "hydrothermal": [143], "fluids": [144], "CO2-N2-NaCl-H2O": [146], "composition": [147], "temperatures": [149], "ranging": [150], "390": [152], "340": [154], "\u00b0C,": [155], "44\u201322.7": [157], "wt%": [158, 183], "NaCl-eq,": [159], "whereas": [160], "epithermal": [162], "originated": [165], "low-temperature": [167], "CO2": [168], "N2-NaCl-H2O": [170], "fluids,": [171], "homogenization": [174], "temperature": [175], "230\u2013210": [177], "\u00b0C": [178], "a": [180], "9.2\u20133.3": [182], "NaCl-eq.": [184]}. Error
+:Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 90, in clean_single_abstract
+    return reproc(abstract)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 76, in preprocessing
+    return reproc(text)
+  File "cytoolz\\functoolz.pyx", line 518, in cytoolz.functoolz.Compose.__call__
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <lambda>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\text_preprocessing.py", line 73, in <listcomp>
+    lambda x: ' '.join([word for word in x.split(' ') if word not in stopwords.words('english')])
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 121, in __getattr__
+    self.__load()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\nltk\corpus\util.py", line 89, in __load
+    corpus = self.__reader_cls(root, *self.__args, **self.__kwargs)
+AttributeError: 'WordListCorpusReader' object has no attribute '_LazyCorpusLoader__reader_cls'
+
+
+[Fri Mar 29 22:38:03 2024]   996 abstracts inserted in 67.9 sec, overall it's 14.7 abstracts/sec
+[Fri Mar 29 22:39:09 2024]   1000 abstracts inserted in 65.6 sec, overall it's 15.2 abstracts/sec
+[Fri Mar 29 22:40:19 2024]   1000 abstracts inserted in 69.8 sec, overall it's 14.3 abstracts/sec
+[Fri Mar 29 22:41:23 2024]   1000 abstracts inserted in 64.0 sec, overall it's 15.6 abstracts/sec
+[Fri Mar 29 22:42:31 2024]   1000 abstracts inserted in 67.9 sec, overall it's 14.7 abstracts/sec
+[Fri Mar 29 22:43:38 2024]   1000 abstracts inserted in 67.0 sec, overall it's 14.9 abstracts/sec
+[Fri Mar 29 22:44:48 2024]   1000 abstracts inserted in 70.3 sec, overall it's 14.2 abstracts/sec
+[Fri Mar 29 22:45:59 2024]   1000 abstracts inserted in 71.1 sec, overall it's 14.1 abstracts/sec
+[Fri Mar 29 22:47:07 2024]   1000 abstracts inserted in 67.6 sec, overall it's 14.8 abstracts/sec
+[Fri Mar 29 22:48:14 2024]   1000 abstracts inserted in 67.1 sec, overall it's 14.9 abstracts/sec
+[Fri Mar 29 22:49:21 2024]   1000 abstracts inserted in 66.9 sec, overall it's 14.9 abstracts/sec
+[Fri Mar 29 22:50:29 2024]   1000 abstracts inserted in 68.8 sec, overall it's 14.5 abstracts/sec
+[Fri Mar 29 22:51:37 2024]   1000 abstracts inserted in 67.7 sec, overall it's 14.8 abstracts/sec
+[Fri Mar 29 22:52:45 2024]   1000 abstracts inserted in 68.5 sec, overall it's 14.6 abstracts/sec
+[Fri Mar 29 22:53:41 2024]   196 abstracts inserted in 55.3 sec, overall it's 3.5 abstracts/sec
+[Fri Mar 29 22:54:13 2024]   Finally 100.0% (14192 from 14196) abstracts inserted in 1005.5 sec

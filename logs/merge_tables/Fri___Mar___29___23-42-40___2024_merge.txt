@@ -1,0 +1,4 @@
+Start merging tables:
+From ../local_db/articles.db, articles to ../../main_db/articles.db, articles
+
+[Fri Mar 29 23:42:41 2024]   Got values in 1.4 sec

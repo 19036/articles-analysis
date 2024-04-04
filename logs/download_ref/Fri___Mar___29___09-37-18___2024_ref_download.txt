@@ -1,0 +1,554 @@
+
+
+
+Start downloading works_by_ids in 4 thread(s) at [Fri Mar 29 09:39:06 2024]
+
+
+
+[Fri Mar 29 09:40:32 2024] count: 500, speed: 0.171 sec/article, request: 97.0%, db: 2.4, other: 0.6%
+[Fri Mar 29 09:41:57 2024] count: 500, speed: 0.171 sec/article, request: 97.2%, db: 2.2, other: 0.6%
+[Fri Mar 29 09:43:21 2024] count: 500, speed: 0.167 sec/article, request: 97.9%, db: 1.6, other: 0.5%
+[Fri Mar 29 09:44:45 2024] count: 500, speed: 0.168 sec/article, request: 97.6%, db: 2.0, other: 0.4%
+[Fri Mar 29 09:46:10 2024] count: 500, speed: 0.17 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 09:47:30 2024] Problem with getting article with id = W1729541717
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 357, in download_work_by_id
+    work = Works()[id_]
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 267, in _get_from_url
+    res.raise_for_status()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: NOT FOUND for url: https://api.openalex.org/works/W1729541717
+
+[Fri Mar 29 09:47:34 2024] count: 500, speed: 0.168 sec/article, request: 97.2%, db: 2.2, other: 0.6%
+[Fri Mar 29 09:48:59 2024] count: 500, speed: 0.171 sec/article, request: 97.2%, db: 1.9, other: 0.9%
+[Fri Mar 29 09:49:10 2024] Problem with adding article with id = W2950746991
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 09:49:16 2024] Problem with adding article with id = W2982155969
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 09:50:25 2024] count: 500, speed: 0.172 sec/article, request: 96.6%, db: 2.6, other: 0.8%
+[Fri Mar 29 09:51:49 2024] count: 500, speed: 0.167 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 09:53:12 2024] count: 500, speed: 0.167 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 09:54:35 2024] count: 500, speed: 0.166 sec/article, request: 97.7%, db: 2.0, other: 0.3%
+[Fri Mar 29 09:55:19 2024] Problem with adding article with id = W2336379000
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    cursor.execute(f"""
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 09:56:00 2024] count: 500, speed: 0.17 sec/article, request: 97.1%, db: 2.1, other: 0.8%
+[Fri Mar 29 09:57:23 2024] count: 500, speed: 0.167 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 09:58:49 2024] count: 500, speed: 0.172 sec/article, request: 96.8%, db: 2.5, other: 0.7%
+[Fri Mar 29 10:00:16 2024] count: 500, speed: 0.174 sec/article, request: 96.3%, db: 3.0, other: 0.7%
+[Fri Mar 29 10:01:43 2024] count: 500, speed: 0.173 sec/article, request: 96.9%, db: 2.4, other: 0.7%
+[Fri Mar 29 10:03:08 2024] count: 500, speed: 0.171 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 10:04:34 2024] count: 500, speed: 0.172 sec/article, request: 97.4%, db: 2.0, other: 0.6%
+[Fri Mar 29 10:06:02 2024] count: 500, speed: 0.176 sec/article, request: 96.1%, db: 3.3, other: 0.6%
+[Fri Mar 29 10:07:28 2024] count: 500, speed: 0.172 sec/article, request: 97.1%, db: 2.6, other: 0.3%
+[Fri Mar 29 10:08:55 2024] count: 500, speed: 0.175 sec/article, request: 96.9%, db: 2.4, other: 0.7%
+[Fri Mar 29 10:10:16 2024] Problem with adding article with id = W2951394626
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 10:10:22 2024] count: 500, speed: 0.173 sec/article, request: 97.3%, db: 2.1, other: 0.6%
+[Fri Mar 29 10:11:47 2024] count: 500, speed: 0.169 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 10:13:14 2024] count: 500, speed: 0.175 sec/article, request: 97.3%, db: 2.1, other: 0.6%
+[Fri Mar 29 10:14:38 2024] count: 500, speed: 0.168 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 10:14:42 2024] Problem with getting article with id = W2259943812
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 357, in download_work_by_id
+    # name = 'sasan'
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 267, in _get_from_url
+    res.raise_for_status()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: NOT FOUND for url: https://api.openalex.org/works/W2259943812
+
+[Fri Mar 29 10:16:04 2024] count: 500, speed: 0.172 sec/article, request: 97.5%, db: 1.8, other: 0.7%
+[Fri Mar 29 10:17:30 2024] count: 500, speed: 0.172 sec/article, request: 97.2%, db: 2.2, other: 0.6%
+[Fri Mar 29 10:18:54 2024] count: 500, speed: 0.168 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 10:20:06 2024] Problem with adding article with id = W2471344393
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 10:20:25 2024] count: 500, speed: 0.181 sec/article, request: 94.5%, db: 4.1, other: 1.4%
+[Fri Mar 29 10:21:59 2024] count: 500, speed: 0.189 sec/article, request: 93.0%, db: 5.8, other: 1.2%
+[Fri Mar 29 10:23:25 2024] count: 500, speed: 0.172 sec/article, request: 97.0%, db: 2.4, other: 0.6%
+[Fri Mar 29 10:24:51 2024] count: 500, speed: 0.172 sec/article, request: 96.3%, db: 2.8, other: 0.9%
+[Fri Mar 29 10:26:17 2024] count: 500, speed: 0.172 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 10:27:45 2024] count: 500, speed: 0.175 sec/article, request: 97.2%, db: 2.2, other: 0.6%
+[Fri Mar 29 10:29:10 2024] count: 500, speed: 0.171 sec/article, request: 97.6%, db: 2.1, other: 0.3%
+[Fri Mar 29 10:30:37 2024] count: 500, speed: 0.174 sec/article, request: 95.9%, db: 3.0, other: 1.1%
+[Fri Mar 29 10:30:41 2024] Problem with adding article with id = W2188081533
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 10:32:06 2024] count: 500, speed: 0.179 sec/article, request: 96.5%, db: 2.8, other: 0.7%
+[Fri Mar 29 10:32:14 2024] Problem with adding article with id = W2344680177
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 10:33:35 2024] count: 500, speed: 0.178 sec/article, request: 96.0%, db: 3.1, other: 0.9%
+[Fri Mar 29 10:35:03 2024] count: 500, speed: 0.174 sec/article, request: 96.7%, db: 2.6, other: 0.7%
+[Fri Mar 29 10:36:31 2024] count: 500, speed: 0.176 sec/article, request: 96.9%, db: 2.6, other: 0.5%
+[Fri Mar 29 10:37:57 2024] count: 500, speed: 0.173 sec/article, request: 96.7%, db: 2.3, other: 1.0%
+[Fri Mar 29 10:39:20 2024] count: 500, speed: 0.166 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 10:40:44 2024] count: 500, speed: 0.167 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 10:42:09 2024] count: 500, speed: 0.172 sec/article, request: 96.9%, db: 2.4, other: 0.7%
+[Fri Mar 29 10:43:34 2024] count: 500, speed: 0.168 sec/article, request: 98.0%, db: 1.9, other: 0.1%
+[Fri Mar 29 10:45:01 2024] count: 500, speed: 0.175 sec/article, request: 97.2%, db: 2.0, other: 0.8%
+[Fri Mar 29 10:46:24 2024] count: 500, speed: 0.166 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 10:47:47 2024] count: 500, speed: 0.167 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 10:49:10 2024] count: 500, speed: 0.165 sec/article, request: 97.8%, db: 1.7, other: 0.5%
+[Fri Mar 29 10:50:33 2024] count: 500, speed: 0.167 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 10:51:21 2024] Problem with adding article with id = W2473788140
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 10:51:59 2024] count: 500, speed: 0.171 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 10:53:23 2024] count: 500, speed: 0.168 sec/article, request: 97.9%, db: 1.7, other: 0.4%
+[Fri Mar 29 10:54:47 2024] count: 500, speed: 0.168 sec/article, request: 97.8%, db: 2.0, other: 0.2%
+[Fri Mar 29 10:56:12 2024] count: 500, speed: 0.171 sec/article, request: 97.2%, db: 2.1, other: 0.7%
+[Fri Mar 29 10:57:36 2024] count: 500, speed: 0.168 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 10:57:41 2024] Problem with adding article with id = W2467345629
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 10:59:05 2024] count: 500, speed: 0.178 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 10:59:46 2024] Problem with adding article with id = W2531282327
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:00:29 2024] count: 500, speed: 0.167 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 11:01:40 2024] Problem with adding article with id = W2519881964
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:01:54 2024] count: 500, speed: 0.17 sec/article, request: 97.6%, db: 2.0, other: 0.4%
+[Fri Mar 29 11:03:23 2024] count: 500, speed: 0.179 sec/article, request: 97.9%, db: 1.5, other: 0.6%
+[Fri Mar 29 11:04:47 2024] count: 500, speed: 0.167 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 11:06:11 2024] count: 500, speed: 0.168 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 11:06:34 2024] Problem with adding article with id = W2798635129
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:07:10 2024] Problem with adding article with id = W3141301723
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:07:34 2024] count: 500, speed: 0.168 sec/article, request: 97.8%, db: 1.9, other: 0.3%
+[Fri Mar 29 11:08:59 2024] count: 500, speed: 0.168 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 11:10:22 2024] count: 500, speed: 0.167 sec/article, request: 98.1%, db: 1.8, other: 0.1%
+[Fri Mar 29 11:11:46 2024] count: 500, speed: 0.167 sec/article, request: 97.1%, db: 2.0, other: 0.9%
+[Fri Mar 29 11:13:10 2024] count: 500, speed: 0.169 sec/article, request: 97.8%, db: 1.7, other: 0.5%
+[Fri Mar 29 11:13:22 2024] Problem with getting article with id = W2215587848
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 357, in download_work_by_id
+    # name = 'sasan'
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 267, in _get_from_url
+    res.raise_for_status()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: NOT FOUND for url: https://api.openalex.org/works/W2215587848
+
+[Fri Mar 29 11:14:11 2024] Problem with adding article with id = W2468474192
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:14:35 2024] count: 500, speed: 0.168 sec/article, request: 97.4%, db: 2.0, other: 0.6%
+[Fri Mar 29 11:15:59 2024] count: 500, speed: 0.169 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 11:17:23 2024] count: 500, speed: 0.17 sec/article, request: 97.3%, db: 2.1, other: 0.6%
+[Fri Mar 29 11:18:48 2024] count: 500, speed: 0.169 sec/article, request: 97.6%, db: 2.0, other: 0.4%
+[Fri Mar 29 11:20:13 2024] count: 500, speed: 0.169 sec/article, request: 97.4%, db: 2.0, other: 0.6%
+[Fri Mar 29 11:20:43 2024] Problem with adding article with id = W2799018766
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:21:36 2024] count: 500, speed: 0.168 sec/article, request: 98.0%, db: 1.6, other: 0.4%
+[Fri Mar 29 11:23:01 2024] count: 500, speed: 0.169 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 11:24:24 2024] count: 500, speed: 0.167 sec/article, request: 97.8%, db: 1.7, other: 0.5%
+[Fri Mar 29 11:25:31 2024] Problem with adding article with id = W3111003313
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:25:48 2024] count: 500, speed: 0.167 sec/article, request: 97.9%, db: 1.7, other: 0.4%
+[Fri Mar 29 11:26:28 2024] Problem with adding article with id = W2969883301
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:27:12 2024] count: 500, speed: 0.168 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 11:28:35 2024] Problem with adding article with id = W2734305690
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:28:36 2024] count: 500, speed: 0.168 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 11:30:01 2024] count: 500, speed: 0.17 sec/article, request: 97.0%, db: 2.2, other: 0.8%
+[Fri Mar 29 11:31:27 2024] count: 500, speed: 0.172 sec/article, request: 97.3%, db: 2.2, other: 0.5%
+[Fri Mar 29 11:32:51 2024] count: 500, speed: 0.169 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 11:34:15 2024] count: 500, speed: 0.168 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 11:34:45 2024] Problem with adding article with id = W2318390349
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:35:39 2024] count: 500, speed: 0.167 sec/article, request: 98.1%, db: 1.7, other: 0.2%
+[Fri Mar 29 11:37:04 2024] count: 500, speed: 0.169 sec/article, request: 97.4%, db: 1.9, other: 0.7%
+[Fri Mar 29 11:38:15 2024] Problem with adding article with id = W2522941168
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 11:38:28 2024] count: 500, speed: 0.167 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 11:39:52 2024] count: 500, speed: 0.168 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 11:41:18 2024] count: 500, speed: 0.172 sec/article, request: 98.0%, db: 1.7, other: 0.3%
+[Fri Mar 29 11:42:42 2024] count: 500, speed: 0.169 sec/article, request: 97.3%, db: 2.1, other: 0.6%
+[Fri Mar 29 11:44:04 2024] count: 500, speed: 0.165 sec/article, request: 97.4%, db: 1.8, other: 0.8%
+[Fri Mar 29 11:45:28 2024] count: 500, speed: 0.168 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 11:46:51 2024] count: 500, speed: 0.167 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 11:48:15 2024] count: 500, speed: 0.166 sec/article, request: 98.1%, db: 1.7, other: 0.2%
+[Fri Mar 29 11:49:38 2024] count: 500, speed: 0.166 sec/article, request: 97.2%, db: 2.0, other: 0.8%
+[Fri Mar 29 11:51:01 2024] count: 500, speed: 0.167 sec/article, request: 97.8%, db: 1.7, other: 0.5%
+[Fri Mar 29 11:52:25 2024] count: 500, speed: 0.168 sec/article, request: 97.9%, db: 2.1, other: -0.0%
+[Fri Mar 29 11:53:48 2024] count: 500, speed: 0.166 sec/article, request: 97.5%, db: 1.9, other: 0.6%
+[Fri Mar 29 11:55:12 2024] count: 500, speed: 0.167 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 11:56:35 2024] count: 500, speed: 0.167 sec/article, request: 97.2%, db: 2.1, other: 0.7%
+[Fri Mar 29 11:57:58 2024] count: 500, speed: 0.165 sec/article, request: 98.0%, db: 2.0, other: 0.0%
+[Fri Mar 29 11:59:23 2024] count: 500, speed: 0.169 sec/article, request: 97.2%, db: 2.1, other: 0.7%
+[Fri Mar 29 12:00:46 2024] count: 500, speed: 0.167 sec/article, request: 97.5%, db: 2.0, other: 0.5%
+[Fri Mar 29 12:02:10 2024] count: 500, speed: 0.168 sec/article, request: 97.5%, db: 2.0, other: 0.5%
+[Fri Mar 29 12:03:33 2024] count: 500, speed: 0.166 sec/article, request: 97.6%, db: 1.7, other: 0.7%
+[Fri Mar 29 12:04:58 2024] count: 500, speed: 0.169 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 12:05:47 2024] Problem with getting article with id = W1895469704
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 357, in download_work_by_id
+    # name = 'sasan'
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 267, in _get_from_url
+    res.raise_for_status()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: NOT FOUND for url: https://api.openalex.org/works/W1895469704
+
+[Fri Mar 29 12:06:21 2024] count: 500, speed: 0.168 sec/article, request: 97.4%, db: 1.9, other: 0.7%
+[Fri Mar 29 12:07:51 2024] count: 500, speed: 0.179 sec/article, request: 97.7%, db: 2.0, other: 0.3%
+[Fri Mar 29 12:09:15 2024] count: 500, speed: 0.168 sec/article, request: 97.6%, db: 1.8, other: 0.6%
+[Fri Mar 29 12:10:39 2024] count: 500, speed: 0.169 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 12:12:02 2024] count: 500, speed: 0.167 sec/article, request: 98.2%, db: 1.6, other: 0.2%
+[Fri Mar 29 12:13:27 2024] count: 500, speed: 0.169 sec/article, request: 97.5%, db: 1.9, other: 0.6%
+[Fri Mar 29 12:14:51 2024] count: 500, speed: 0.168 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 12:15:19 2024] Problem with adding article with id = W2461549887
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:16:15 2024] count: 500, speed: 0.168 sec/article, request: 97.9%, db: 1.7, other: 0.4%
+[Fri Mar 29 12:16:59 2024] Problem with adding article with id = W2185037240
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:17:39 2024] count: 500, speed: 0.167 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 12:19:03 2024] count: 500, speed: 0.168 sec/article, request: 97.8%, db: 1.7, other: 0.5%
+[Fri Mar 29 12:19:51 2024] Problem with adding article with id = W2527449565
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:20:25 2024] Problem with adding article with id = W2513006269
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:20:27 2024] count: 500, speed: 0.168 sec/article, request: 98.0%, db: 1.8, other: 0.2%
+[Fri Mar 29 12:21:51 2024] count: 500, speed: 0.168 sec/article, request: 97.4%, db: 2.0, other: 0.6%
+[Fri Mar 29 12:23:14 2024] count: 500, speed: 0.166 sec/article, request: 98.1%, db: 1.7, other: 0.2%
+[Fri Mar 29 12:24:37 2024] count: 500, speed: 0.167 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 12:24:52 2024] Problem with adding article with id = W2499489672
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:26:02 2024] count: 500, speed: 0.171 sec/article, request: 97.7%, db: 1.7, other: 0.6%
+[Fri Mar 29 12:27:27 2024] count: 500, speed: 0.168 sec/article, request: 97.9%, db: 2.0, other: 0.1%
+[Fri Mar 29 12:28:51 2024] count: 500, speed: 0.168 sec/article, request: 97.1%, db: 2.0, other: 0.9%
+[Fri Mar 29 12:30:22 2024] count: 500, speed: 0.181 sec/article, request: 97.4%, db: 2.2, other: 0.4%
+[Fri Mar 29 12:31:11 2024] Problem with adding article with id = W1652537032
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:31:51 2024] count: 500, speed: 0.18 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 12:33:16 2024] count: 500, speed: 0.17 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 12:33:36 2024] Problem with adding article with id = W3103324632
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:34:40 2024] count: 500, speed: 0.166 sec/article, request: 97.8%, db: 1.7, other: 0.5%
+[Fri Mar 29 12:36:05 2024] count: 500, speed: 0.17 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 12:37:29 2024] Problem with adding article with id = W2886956051
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:37:31 2024] count: 500, speed: 0.172 sec/article, request: 97.5%, db: 2.0, other: 0.5%
+[Fri Mar 29 12:38:56 2024] count: 500, speed: 0.171 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 12:40:33 2024] count: 500, speed: 0.192 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 12:42:03 2024] count: 500, speed: 0.18 sec/article, request: 93.5%, db: 4.1, other: 2.4%
+[Fri Mar 29 12:43:28 2024] count: 500, speed: 0.17 sec/article, request: 97.1%, db: 2.5, other: 0.4%
+[Fri Mar 29 12:44:56 2024] count: 500, speed: 0.177 sec/article, request: 95.0%, db: 4.0, other: 1.0%
+[Fri Mar 29 12:46:23 2024] count: 500, speed: 0.165 sec/article, request: 98.0%, db: 1.7, other: 0.3%
+[Fri Mar 29 12:47:05 2024] Problem with adding article with id = W1986119538
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:47:13 2024] Problem with adding article with id = W2182716539
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:47:48 2024] count: 500, speed: 0.178 sec/article, request: 97.3%, db: 2.1, other: 0.6%
+[Fri Mar 29 12:49:10 2024] count: 500, speed: 0.165 sec/article, request: 97.8%, db: 1.9, other: 0.3%
+[Fri Mar 29 12:50:34 2024] count: 500, speed: 0.168 sec/article, request: 97.5%, db: 2.0, other: 0.5%
+[Fri Mar 29 12:50:39 2024] Problem with adding article with id = W2524808797
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:52:04 2024] count: 500, speed: 0.179 sec/article, request: 97.9%, db: 1.6, other: 0.5%
+[Fri Mar 29 12:52:10 2024] Problem with adding article with id = W2125716413
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:53:29 2024] count: 500, speed: 0.17 sec/article, request: 97.6%, db: 2.0, other: 0.4%
+[Fri Mar 29 12:54:54 2024] count: 500, speed: 0.169 sec/article, request: 97.9%, db: 1.7, other: 0.4%
+[Fri Mar 29 12:56:18 2024] count: 500, speed: 0.169 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 12:56:26 2024] Problem with adding article with id = W2798323364
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 12:57:44 2024] count: 500, speed: 0.171 sec/article, request: 97.0%, db: 2.6, other: 0.4%
+[Fri Mar 29 12:59:07 2024] count: 500, speed: 0.168 sec/article, request: 97.5%, db: 1.9, other: 0.6%
+[Fri Mar 29 13:00:36 2024] count: 500, speed: 0.179 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 13:02:04 2024] count: 500, speed: 0.175 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 13:03:28 2024] count: 500, speed: 0.169 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 13:04:53 2024] count: 500, speed: 0.169 sec/article, request: 97.4%, db: 2.0, other: 0.6%
+[Fri Mar 29 13:06:16 2024] Problem with getting article with id = W180158795
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 357, in download_work_by_id
+    # name = 'sasan'
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 267, in _get_from_url
+    res.raise_for_status()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: NOT FOUND for url: https://api.openalex.org/works/W180158795
+
+[Fri Mar 29 13:06:20 2024] count: 500, speed: 0.174 sec/article, request: 97.0%, db: 2.2, other: 0.8%
+[Fri Mar 29 13:07:45 2024] count: 500, speed: 0.17 sec/article, request: 97.1%, db: 2.2, other: 0.7%
+[Fri Mar 29 13:09:09 2024] count: 500, speed: 0.169 sec/article, request: 97.9%, db: 1.9, other: 0.2%
+[Fri Mar 29 13:09:25 2024] Problem with adding article with id = W3020841340
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 13:10:34 2024] count: 500, speed: 0.169 sec/article, request: 97.3%, db: 2.0, other: 0.7%
+[Fri Mar 29 13:11:59 2024] count: 500, speed: 0.169 sec/article, request: 97.3%, db: 2.3, other: 0.4%
+[Fri Mar 29 13:13:22 2024] count: 500, speed: 0.167 sec/article, request: 97.9%, db: 1.7, other: 0.4%
+[Fri Mar 29 13:14:46 2024] count: 500, speed: 0.167 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 13:16:11 2024] count: 500, speed: 0.172 sec/article, request: 98.0%, db: 1.7, other: 0.3%
+[Fri Mar 29 13:17:36 2024] count: 500, speed: 0.169 sec/article, request: 97.6%, db: 1.9, other: 0.5%
+[Fri Mar 29 13:19:00 2024] count: 500, speed: 0.168 sec/article, request: 97.9%, db: 1.9, other: 0.2%
+[Fri Mar 29 13:20:25 2024] count: 500, speed: 0.169 sec/article, request: 97.2%, db: 2.1, other: 0.7%
+[Fri Mar 29 13:21:48 2024] count: 500, speed: 0.167 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 13:22:49 2024] Problem with adding article with id = W2520470970
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 13:23:09 2024] Problem with adding article with id = W2460475550
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 13:23:12 2024] count: 500, speed: 0.168 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 13:24:36 2024] count: 500, speed: 0.169 sec/article, request: 97.5%, db: 2.0, other: 0.5%
+[Fri Mar 29 13:26:00 2024] count: 500, speed: 0.167 sec/article, request: 97.7%, db: 1.9, other: 0.4%
+[Fri Mar 29 13:27:28 2024] count: 500, speed: 0.176 sec/article, request: 97.9%, db: 1.8, other: 0.3%
+[Fri Mar 29 13:28:51 2024] count: 500, speed: 0.167 sec/article, request: 98.0%, db: 1.6, other: 0.4%
+[Fri Mar 29 13:30:18 2024] count: 500, speed: 0.172 sec/article, request: 97.2%, db: 2.4, other: 0.4%
+[Fri Mar 29 13:31:43 2024] count: 500, speed: 0.17 sec/article, request: 97.0%, db: 2.2, other: 0.8%
+[Fri Mar 29 13:31:56 2024] Problem with adding article with id = W2895095711
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 13:32:45 2024] Problem with adding article with id = W2549991739
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 13:33:07 2024] count: 500, speed: 0.168 sec/article, request: 97.6%, db: 2.0, other: 0.4%
+[Fri Mar 29 13:34:31 2024] count: 500, speed: 0.167 sec/article, request: 98.1%, db: 1.6, other: 0.3%
+[Fri Mar 29 13:36:00 2024] count: 500, speed: 0.18 sec/article, request: 97.7%, db: 1.8, other: 0.5%
+[Fri Mar 29 13:37:25 2024] count: 500, speed: 0.169 sec/article, request: 97.9%, db: 1.7, other: 0.4%
+[Fri Mar 29 13:38:49 2024] count: 500, speed: 0.169 sec/article, request: 98.0%, db: 1.8, other: 0.2%
+[Fri Mar 29 13:40:14 2024] count: 500, speed: 0.169 sec/article, request: 97.6%, db: 1.8, other: 0.6%
+[Fri Mar 29 13:41:37 2024] count: 500, speed: 0.168 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 13:43:01 2024] count: 500, speed: 0.168 sec/article, request: 98.0%, db: 1.9, other: 0.1%
+[Fri Mar 29 13:43:03 2024] Problem with adding article with id = W2515499229
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 13:44:30 2024] count: 500, speed: 0.178 sec/article, request: 96.7%, db: 2.5, other: 0.8%
+[Fri Mar 29 13:45:57 2024] count: 500, speed: 0.174 sec/article, request: 96.9%, db: 2.6, other: 0.5%
+[Fri Mar 29 13:47:26 2024] count: 500, speed: 0.177 sec/article, request: 95.8%, db: 3.7, other: 0.5%
+[Fri Mar 29 13:48:53 2024] count: 500, speed: 0.168 sec/article, request: 97.4%, db: 1.9, other: 0.7%
+[Fri Mar 29 13:50:18 2024] count: 500, speed: 0.175 sec/article, request: 98.1%, db: 1.7, other: 0.2%
+[Fri Mar 29 13:51:41 2024] count: 500, speed: 0.166 sec/article, request: 97.2%, db: 2.1, other: 0.7%
+[Fri Mar 29 13:53:04 2024] count: 500, speed: 0.166 sec/article, request: 97.5%, db: 2.0, other: 0.5%
+[Fri Mar 29 13:54:27 2024] count: 500, speed: 0.165 sec/article, request: 98.0%, db: 2.1, other: -0.1%
+[Fri Mar 29 13:55:51 2024] count: 500, speed: 0.17 sec/article, request: 97.1%, db: 1.8, other: 1.1%
+[Fri Mar 29 13:56:23 2024] Problem with adding article with id = W3033818216
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 13:57:14 2024] count: 500, speed: 0.166 sec/article, request: 97.4%, db: 2.1, other: 0.5%
+[Fri Mar 29 13:57:28 2024] Problem with adding article with id = W3185168393
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 13:58:37 2024] count: 500, speed: 0.166 sec/article, request: 98.0%, db: 1.8, other: 0.2%
+[Fri Mar 29 14:00:02 2024] count: 500, speed: 0.17 sec/article, request: 97.2%, db: 2.2, other: 0.6%
+[Fri Mar 29 14:00:38 2024] Problem with adding article with id = W2300568780
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 14:01:26 2024] count: 500, speed: 0.168 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 14:02:52 2024] count: 500, speed: 0.171 sec/article, request: 97.8%, db: 1.8, other: 0.4%
+[Fri Mar 29 14:04:11 2024] Problem with adding article with id = W2021480010
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 14:04:15 2024] count: 500, speed: 0.167 sec/article, request: 97.8%, db: 2.0, other: 0.2%
+[Fri Mar 29 14:05:44 2024] count: 500, speed: 0.178 sec/article, request: 97.7%, db: 1.7, other: 0.6%
+[Fri Mar 29 14:07:08 2024] count: 500, speed: 0.169 sec/article, request: 97.1%, db: 2.3, other: 0.6%
+[Fri Mar 29 14:08:35 2024] count: 500, speed: 0.174 sec/article, request: 96.9%, db: 2.3, other: 0.8%
+[Fri Mar 29 14:08:40 2024] Problem with adding article with id = W2189067318
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 14:10:06 2024] count: 500, speed: 0.181 sec/article, request: 95.7%, db: 3.4, other: 0.9%
+[Fri Mar 29 14:11:39 2024] count: 500, speed: 0.185 sec/article, request: 96.2%, db: 2.9, other: 0.9%
+[Fri Mar 29 14:13:12 2024] count: 500, speed: 0.186 sec/article, request: 94.0%, db: 4.6, other: 1.4%
+[Fri Mar 29 14:14:45 2024] count: 500, speed: 0.181 sec/article, request: 96.1%, db: 2.6, other: 1.3%
+[Fri Mar 29 14:16:19 2024] count: 500, speed: 0.194 sec/article, request: 97.2%, db: 2.5, other: 0.3%
+[Fri Mar 29 14:17:57 2024] count: 500, speed: 0.195 sec/article, request: 95.2%, db: 3.2, other: 1.6%
+[Fri Mar 29 14:19:09 2024] Problem with adding article with id = W1605946224
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 14:19:35 2024] count: 500, speed: 0.197 sec/article, request: 95.6%, db: 3.3, other: 1.1%
+[Fri Mar 29 14:19:45 2024] Problem with adding article with id = W2181967602
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 383, in download_work_by_id
+    if __name__ == '__main__':
+sqlite3.IntegrityError: UNIQUE constraint failed: articles.id
+
+[Fri Mar 29 14:21:06 2024] Problem with getting article with id = W2881047281
+Traceback (most recent call last):
+  File "c:\users\asus\onedrive\документы\github\articles-analysis\programs\downloading_referenced_works.py", line 357, in download_work_by_id
+    # name = 'sasan'
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 225, in __getitem__
+    return self._get_from_url(
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\Python\lib\site-packages\pyalex\api.py", line 267, in _get_from_url
+    res.raise_for_status()
+  File "C:\Users\Asus\AppData\Local\Programs\Spyder\pkgs\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: NOT FOUND for url: https://api.openalex.org/works/W2881047281
+
+[Fri Mar 29 14:21:10 2024] count: 500, speed: 0.191 sec/article, request: 95.9%, db: 3.2, other: 0.9%
+[Fri Mar 29 14:22:45 2024] count: 500, speed: 0.19 sec/article, request: 95.6%, db: 3.3, other: 1.1%
