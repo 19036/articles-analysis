@@ -124,3 +124,119 @@ Topics: 873
 
 
 
+[Thu Apr  4 19:39:48 2024]
+About topics_oa of sob (unique:1) articles:
+
+Domains:
+Physical Sciences: 42963
+Social Sciences: 2962
+Life Sciences: 2747
+Health Sciences: 1488
+Fields: 26
+    Mathematics: 15388
+    Computer Science: 10688
+    Physics and Astronomy: 8809
+    Engineering: 6253
+    Biochemistry, Genetics and Molecular Biology: 1998
+    Medicine: 1427
+    Business, Management and Accounting: 896
+    Decision Sciences: 876
+    Economics, Econometrics and Finance: 803
+    Earth and Planetary Sciences: 613
+    Materials Science: 501
+    Immunology and Microbiology: 370
+    Environmental Science: 283
+    Chemistry: 224
+    Social Sciences: 218
+    Agricultural and Biological Sciences: 191
+    Neuroscience: 178
+    Chemical Engineering: 176
+    Psychology: 94
+    Arts and Humanities: 75
+    Health Professions: 43
+    Energy: 28
+    Nursing: 11
+    Pharmacology, Toxicology and Pharmaceutics: 10
+    Dentistry: 4
+    Veterinary: 3
+Subfields: 201
+Topics: 1724
+
+
+
+[Thu Apr  4 19:39:52 2024]
+About topics_oa of sob level_1 (unique:1) articles:
+
+Domains:
+Physical Sciences: 3709
+Social Sciences: 240
+Life Sciences: 85
+Health Sciences: 67
+Fields: 23
+    Mathematics: 1501
+    Computer Science: 1046
+    Engineering: 561
+    Physics and Astronomy: 479
+    Business, Management and Accounting: 84
+    Economics, Econometrics and Finance: 76
+    Medicine: 65
+    Biochemistry, Genetics and Molecular Biology: 63
+    Earth and Planetary Sciences: 59
+    Decision Sciences: 52
+    Chemical Engineering: 20
+    Social Sciences: 19
+    Environmental Science: 17
+    Materials Science: 16
+    Neuroscience: 12
+    Chemistry: 9
+    Arts and Humanities: 6
+    Agricultural and Biological Sciences: 6
+    Psychology: 3
+    Immunology and Microbiology: 2
+    Health Professions: 2
+    Pharmacology, Toxicology and Pharmaceutics: 2
+    Energy: 1
+Subfields: 114
+Topics: 489
+
+
+
+[Thu Apr  4 19:39:59 2024]
+About topics_oa of nsu (unique:1) articles:
+
+Domains:
+Physical Sciences: 16099
+Life Sciences: 2538
+Social Sciences: 1155
+Health Sciences: 1082
+Fields: 25
+    Engineering: 3859
+    Physics and Astronomy: 3610
+    Materials Science: 2183
+    Chemistry: 1882
+    Earth and Planetary Sciences: 1778
+    Biochemistry, Genetics and Molecular Biology: 1649
+    Medicine: 1033
+    Computer Science: 968
+    Mathematics: 846
+    Social Sciences: 548
+    Environmental Science: 505
+    Agricultural and Biological Sciences: 377
+    Chemical Engineering: 299
+    Neuroscience: 259
+    Economics, Econometrics and Finance: 187
+    Energy: 169
+    Arts and Humanities: 155
+    Immunology and Microbiology: 139
+    Pharmacology, Toxicology and Pharmaceutics: 114
+    Psychology: 100
+    Business, Management and Accounting: 98
+    Decision Sciences: 67
+    Nursing: 27
+    Health Professions: 17
+    Veterinary: 5
+Subfields: 201
+Topics: 1822
+
+
+

@@ -7,6 +7,7 @@ from threading import Thread, Lock
 from pyalex import Works
 from helpfun import write_logs_by_curr_time, sql_execute
 
+
 pyalex.config.email = "a.khramov@g.nsu.ru"
 
 db_path = '../databases/local_db/articles.db'

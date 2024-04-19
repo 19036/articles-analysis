@@ -2,14 +2,15 @@ import sqlite3
 import json
 import sys, time
 import traceback
-from helpfun import get_current_date, write_logs_by_curr_date
+from helpfun import get_current_date
 from helpfun import sql_execute, req_clear
 
 # db_path = '../databases/local_db/articles.db'
 # db_path = '../databases/articles.db'
 # db_path = '../databases/sob_articles.db'
 db_path = '../databases/nsu_articles.db'
-logs_path = f'../logs/working_with_database/{get_current_date()}_'
+# db_path = '../databases/distances/distances_nsu_level_1.db'
+logs_path = f'../logs/working_with_database/{get_current_date()}.txt'
 try:
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
@@ -17,27 +18,47 @@ except:
     print(f"Couldn't connect to database: {db_path}")
 
 """ Создание таблицы """
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS articles (
-    id TEXT PRIMARY KEY,
-    title TEXT,
-    authors TEXT,
-    abstract TEXT,
-    referenced_works TEXT,
-    cites_this_work TEXT,
-    cited_by_count INT,
-    publication_year INT,
-    keywords_oa TEXT,
-    topics_oa TEXT,
-    level INT,
-    cleaned_abstract TEXT
-)
-""")
+# cursor.execute("""
+# CREATE TABLE IF NOT EXISTS articles (
+#     id TEXT PRIMARY KEY,
+#     title TEXT,
+#     authors TEXT,
+#     abstract TEXT,
+#     referenced_works TEXT,
+#     cites_this_work TEXT,
+#     cited_by_count INT,
+#     publication_year INT,
+#     keywords_oa TEXT,
+#     topics_oa TEXT,
+#     level INT,
+#     cleaned_abstract TEXT
+# )
+# """)
 
 
 
-def write_logs(message:str, logs_path=logs_path):
-    write_logs_by_curr_date(message, logs_path)
+def write_logs(message:str, path:str=logs_path):
+    
+    """ Пишет логи (в файл с текущей датой)
+        Используется в: working_with_database
+                        ml_models
+    """
+    
+    if path is None:
+        # try:
+        #     global logs_path
+        #     path = logs_path
+        # except:
+        path = '../logs/unknown_logs.txt'
+    
+    if path[-4:] != '.txt':
+        path += '_unknown.txt'
+        
+    s = f'[{time.ctime()}]\n'
+    s += message + '\n\n\n'
+    with open(path, 'a') as f:
+        f.write(s)
+    print(s)
 
 def lists_of_works_change_format():
     
@@ -160,9 +181,10 @@ def alter_req():
     # args = (2,)
     
     request = 'SELECT COUNT(*) FROM articles '
-    request += 'WHERE abstract = ? OR abstract IS NULL'
-    args = ('null',)
+    # request += 'WHERE abstract = ? OR abstract IS NULL'
+    # args = ('null',)
     # request = 'ALTER TABLE articles ADD COLUMN cleaned_abstract TEXT'
+    # request = 'ALTER TABLE distances RENAME COLUMN distance TO distances'
     
     request = req_clear(request)
     
@@ -197,7 +219,7 @@ def alter_req():
     write_logs(s, path)
     
 
-def compile_topics_oa(db_name:str='nsu', level=None):
+def compile_topics_oa(db_name:str='nsu', level=None, unique=1):
     
     if level is None:
         request = 'SELECT topics_oa FROM articles'
@@ -234,14 +256,20 @@ def compile_topics_oa(db_name:str='nsu', level=None):
                 topics_dict['domains'][domain] += 1
             else:
                 topics_dict['domains'][domain] = 1
+            
+            if unique:
+                break
     
     for key in topics_dict:
         topics_dict[key] = dict(sorted(topics_dict[key].items(), key=lambda elem: elem[1], reverse=True))
     topics_dict = json.dumps(topics_dict)
     if level is None:
-        path = f'../some info/{db_name}_topics_dict.txt'
+        path = f'../some info/{db_name}_topics_dict'
     else:
-        path = f'../some info/{db_name}_level_{level}_topics_dict.txt'
+        path = f'../some info/{db_name}_level_{level}_topics_dict'
+    if unique:
+        path += '_uniq'
+    path += '.txt'
     with open(path, 'w') as f:
         f.write(topics_dict)
     
@@ -249,19 +277,22 @@ def compile_topics_oa(db_name:str='nsu', level=None):
     print(f'Topics_dict for {db_name} articles compiled in {t} sec')
             
         
-def get_topics_oa_info(db_name:str='nsu', level=None):
+def get_topics_oa_info(db_name:str='nsu', level=None, unique=1):
     
     if level is None:
-        path = f'../some info/{db_name}_topics_dict.txt'
+        path = f'../some info/{db_name}_topics_dict'
     else:
-        path = f'../some info/{db_name}_level_{level}_topics_dict.txt'
+        path = f'../some info/{db_name}_level_{level}_topics_dict'
+    if unique:
+        path += '_uniq'
+    path += '.txt'
     with open(path, 'r') as f:
         td = json.loads(f.read())
     
     if level is None:
-        s = f'About topics_oa of {db_name} articles:\n\n'
+        s = f'About topics_oa of {db_name} (unique:{unique}) articles:\n\n'
     else:
-        s = f'About topics_oa of {db_name} level_{level} articles:\n\n'
+        s = f'About topics_oa of {db_name} level_{level} (unique:{unique}) articles:\n\n'
     s += 'Domains:\n'
     for domain in td['domains']:
         s += f"{domain}: {td['domains'][domain]}\n"
@@ -273,6 +304,7 @@ def get_topics_oa_info(db_name:str='nsu', level=None):
     
     write_logs(s)
     
+
     
     
     
