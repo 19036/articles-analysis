@@ -5,12 +5,14 @@ import json  # для конвертации словарь <--> строка: j
 import pyalex
 import traceback
 from threading import Thread, Lock
-from helpfun import write_logs_by_curr_time as write_logs
+from pyalex import Works
 
 pyalex.config.email = "a.khramov@g.nsu.ru"
 
 # db_path = '../databases/articles.db'
-db_path = '../databases/math_articles.db'
+# db_path = '../databases/math_articles.db'
+db_path = 'D:\\opd/math_articles.db'
+# db_path = '../databases/archive/math_articles.db'
 logs_path = ('../logs/download_cite/' + time.ctime().replace(' ', '___') + '_cite_download.txt').replace(':', '-')
 number_of_threads = 4
 try:
@@ -18,19 +20,35 @@ try:
     cursor = conn.cursor()
 except:
     print(f"Couldn't connect to database: {db_path}")
+
+# request = 'CREATE INDEX "for downloading cite works" ON articles (level ASC, cites_this_work ASC)'
+# cursor.execute(request)
     
 lock = Lock()
 
-# def write_logs(message:str, time_data=True):
+def write_logs(message:str, time_data=True, path=logs_path):
     
-#     global logs_path
-#     s = ''
-#     if time_data:
-#         s = f'[{time.ctime()}]   '
-#     s += message + '\n'
-#     with open(logs_path, 'a') as f:
-#         f.write(s)
-#     print(s)
+    """ Пишет логи (каждый в отдельный файл, в названии точно время старта)
+        Используется в: downloading_cite_works
+                        downloading_referenced_works
+                        text_preprocessing
+                        merging_databases
+    """
+    
+    if path is None:
+        # try:
+        #     global logs_path
+        #     path = logs_path
+        # except:
+        path = '../logs/unknown_logs.txt'
+    
+    s = ''
+    if time_data:
+        s = f'[{time.ctime()}]   '
+    s += message + '\n'
+    with open(path, 'a') as f:
+        f.write(s)
+    print(s)
 
 
 class Time_Check():
@@ -116,82 +134,136 @@ def work_parsing(work):
 
 def download_works_that_cite_this_work(id_, level=1):
     
+    if id_ == 'W4285719527':
+        return
     global time_check
     cites_this_work = []
-    per_page = 200
-    page = 1
-    while page <= 10000:
+    pager = Works().filter(referenced_works=id_).paginate(per_page=200, n_max=None)
+    # per_page = 200
+    # page = 1
+    # while page <= 10000:
         
-        url = f'https://api.openalex.org/works?filter=cites:{id_}&per_page={per_page}&page={page}'
+        # url = f'https://api.openalex.org/works?filter=cites:{id_}&per_page={per_page}&page={page}'
         
-        t_start = time.time()
+        # t_start = time.time()
         
-        t = requests.get(url)
-        try:
-            t = t.json()
-        except:
-            with lock:
-                s = f'Problem with url: {url}\nresponse_text: {t.text}\n'
-                s += f'\nERROR:\n\n{traceback.format_exc()}\n'
-                write_logs(s)
-            continue
+        # t = requests.get(url)
+        # try:
+        #     t = t.json()
+        # except:
+        #     with lock:
+        #         s = f'Problem with url: {url}\nresponse_text: {t.text}\n'
+        #         s += f'\nERROR:\n\n{traceback.format_exc()}\n'
+        #         write_logs(s)
+        #     continue
+        # with lock:
+        #     time_check.request += time.time() - t_start
+        
+        # if 'error' in t:
+        #     s = f'Error in response: {t}'
+        #     write_logs(s)
+        #     break
+        # else:
+        #     if len(t['results']) == 0:
+        #         break
+        #     else:
+        #         page += 1
+        #         for work in t['results']:
+        #             temp_id = work['id'].split('/')[-1]
+        #             cites_this_work.append(temp_id)
+                    
+        #             t_start = time.time()
+        #             with lock:
+        #                 """ Проверяем, есть ли эта статья в БД """
+        #                 cursor = conn.cursor()
+        #                 cursor.execute('''
+        #                                 SELECT
+        #                                 EXISTS
+        #                                 (select id
+        #                                 from articles
+        #                                 where id == (?))
+        #                                 ''', (temp_id,))
+        #                 already_exists = cursor.fetchall()[0][0]
+        #                 time_check.db += time.time() - t_start
+        #             if already_exists:
+        #                 # print(count)
+        #                 # count += 1
+        #                 continue
+                    
+        #             column_names, content = work_parsing(work)
+        #             column_names = column_names[:-1] + ', level)'
+        #             number_of_columns = len(content)
+        #             question_string = '(' + '?, '*(number_of_columns + 1)
+        #             question_string = question_string[:-2] + ')'
+        #             content += (level + 1,)
+                    
+        #             t_start = time.time()
+        #             with lock:
+        #                 try:
+        #                     cursor = conn.cursor()
+        #                     cursor.execute(f"""
+        #                                     insert into articles 
+        #                                     {column_names}
+        #                                     values {question_string}""", 
+        #                                     content)
+        #                     conn.commit()
+        #                     time_check.downloaded += 1
+        #                 except:
+        #                     s = f'Problem with inserting article with id: {content[0]}'
+        #                     s += f'\nERROR:\n\n{traceback.format_exc()}\n'
+        #                     write_logs(s)
+        #                 time_check.db += time.time() - t_start
+    t_start = time.time()
+    for page in pager:
         with lock:
             time_check.request += time.time() - t_start
+        for work in page:
+            temp_id = work['id'].split('/')[-1]
+            cites_this_work.append(temp_id)
+            
+            t_start = time.time()
+            with lock:
+                """ Проверяем, есть ли эта статья в БД """
+                cursor = conn.cursor()
+                cursor.execute('''
+                                SELECT
+                                EXISTS
+                                (select id
+                                from articles
+                                where id == (?))
+                                ''', (temp_id,))
+                already_exists = cursor.fetchall()[0][0]
+                time_check.db += time.time() - t_start
+            if already_exists:
+                # print(count)
+                # count += 1
+                continue
+            
+            column_names, content = work_parsing(work)
+            column_names = column_names[:-1] + ', level)'
+            number_of_columns = len(content)
+            question_string = '(' + '?, '*(number_of_columns + 1)
+            question_string = question_string[:-2] + ')'
+            content += (level + 1,)
+            
+            t_start = time.time()
+            with lock:
+                try:
+                    cursor = conn.cursor()
+                    cursor.execute(f"""
+                                    insert into articles 
+                                    {column_names}
+                                    values {question_string}""", 
+                                    content)
+                    conn.commit()
+                    time_check.downloaded += 1
+                except:
+                    s = f'Problem with inserting article with id: {content[0]}'
+                    s += f'\nERROR:\n\n{traceback.format_exc()}\n'
+                    write_logs(s)
+                time_check.db += time.time() - t_start
         
-        if 'error' in t:
-            s = f'Error in response: {t}'
-            write_logs(s)
-            break
-        else:
-            if len(t['results']) == 0:
-                break
-            else:
-                page += 1
-                for work in t['results']:
-                    temp_id = work['id'].split('/')[-1]
-                    cites_this_work.append(temp_id)
-                    
-                    t_start = time.time()
-                    with lock:
-                        """ Проверяем, есть ли эта статья в БД """
-                        cursor = conn.cursor()
-                        cursor.execute('''
-                                        SELECT
-                                        EXISTS
-                                        (select id
-                                        from articles
-                                        where id == (?))
-                                        ''', (temp_id,))
-                        already_exists = cursor.fetchall()[0][0]
-                        time_check.db += time.time() - t_start
-                    if already_exists:
-                        # print(count)
-                        # count += 1
-                        continue
-                    
-                    column_names, content = work_parsing(work)
-                    column_names = column_names[:-1] + ', level)'
-                    number_of_columns = len(content)
-                    question_string = '(' + '?, '*(number_of_columns + 1)
-                    question_string = question_string[:-2] + ')'
-                    content += (level + 1,)
-                    
-                    t_start = time.time()
-                    with lock:
-                        try:
-                            cursor = conn.cursor()
-                            cursor.execute(f"""
-                                            insert into articles 
-                                            {column_names}
-                                            values {question_string}""", 
-                                            content)
-                            conn.commit()
-                            time_check.downloaded += 1
-                        except:
-                            s = f'Problem with inserting article with id: {content[0]}'
-                            s += f'\nERROR:\n\n{traceback.format_exc()}\n'
-                            write_logs(s)
-                        time_check.db += time.time() - t_start
+        t_start = time.time()
                         
     
     cites_this_work = json.dumps(cites_this_work)
@@ -230,44 +302,47 @@ def download_works_that_cite_id_global(level=1):
     
     global time_check
     global number_of_threads
-    global logs_path
     time_check.number_of_threads = number_of_threads
     s = f'Start downloading cite_works for level_{level} in {number_of_threads} thread(s)\n'
     write_logs(s)
     
-    cursor.execute('''
-                    select id, cited_by_count
-                    from articles
-                    where level = ? and cites_this_work is NULL
-                    ''', (level,))
-                   
-    results = cursor.fetchall()
+    request = ''' SELECT id FROM articles WHERE level = ? and cites_this_work is NULL '''
+    cursor.execute(request, (level,))
+    results = cursor.fetchmany(10000)
     ids = list(map(lambda x: x[0], results))
-    cited_by_count = list(map(lambda x: x[1], results))
-    s = f'Number of articles to check: {len(results)}'
-    write_logs(s)
-    s = f'Number of cite works estimation: {sum(cited_by_count)}'
-    write_logs(s)
-    
-    threads = []
-    length = len(ids)
-    step = round(length/number_of_threads)
-    ids_groups = [ids[step*i: step*(i+1)] for i in range(number_of_threads)]
-    
-    for i in range(number_of_threads):
-        thread = Thread(target=download_works_that_cite_id_local, args=(ids_groups[i], level), name=f"thread_{i+1}")
-        thread.start()
-        threads.append(thread)
-    
-    for thread in threads:
-        thread.join()
+    # cited_by_count = list(map(lambda x: x[1], results))
+    # s = f'Number of articles to check: {len(results)}'
+    # write_logs(s)
+    # s = f'Number of cite works estimation: {sum(cited_by_count)}'
+    # write_logs(s)
+    while len(ids) > 0:
+        threads = []
+        length = len(ids)
+        step = round(length/number_of_threads)
+        ids_groups = [ids[step*i: step*(i+1)] for i in range(number_of_threads)]
+        
+        for i in range(number_of_threads):
+            thread = Thread(target=download_works_that_cite_id_local, args=(ids_groups[i], level), name=f"thread_{i+1}")
+            thread.start()
+            threads.append(thread)
+        
+        for thread in threads:
+            thread.join()
+        
+        request = ''' SELECT id FROM articles WHERE level = ? and cites_this_work is NULL '''
+        cursor.execute(request, (level,))
+        results = cursor.fetchmany(10000)
+        ids = list(map(lambda x: x[0], results))
 
 
 
 if __name__ == '__main__':
     
-    
-    download_works_that_cite_id_global(1)
+    # t_start = time.time()
+    # request = 'UPDATE articles SET cites_this_work = NULL where cited_by_count > 10000'
+    # cursor.execute(request)
+    # print(round(time.time() - t_start, 1))
+    download_works_that_cite_id_global(2)
     
     pass
     
