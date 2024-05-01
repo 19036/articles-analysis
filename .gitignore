@@ -8,3 +8,4 @@ local_db/articles.db
 /ml_models/train_data
 /logs
 /ml_models
+test.model

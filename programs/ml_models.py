@@ -9,7 +9,7 @@ from helpfun import get_current_date, abstract_by_inv_index, sql_execute
 from sklearn.cluster import Birch
 from sklearn.cluster import KMeans
 import joblib
-from statistics import mean
+from statistics import mean, stdev
 from bokeh.plotting import figure, show, output_file, save
 from bokeh.io import curdoc, export_png
 from bokeh.palettes import Turbo256
@@ -18,7 +18,9 @@ from bokeh.models import Range1d, Title, TabPanel, Tabs, ColumnDataSource, Legen
 from bokeh.models.tools import BoxZoomTool, ResetTool, PanTool
 import multiprocessing.dummy
 from numpy.linalg import norm
+import numpy
 import traceback
+from nltk.corpus import stopwords
 import editdistance
 import io
 import itertools
@@ -238,9 +240,9 @@ def load_birch(name:str='nsu_level_1', n_clusters=5):
     model = joblib.load(m_path)
     return model
 
-def load_kmeans(name:str='nsu_level_1', n_clusters=5):
+def load_kmeans(name:str='nsu_level_1', n_clusters=5, alt=False):
     
-    m_path = models_path +  'KMeans/kmeans_' + name + f'_n={n_clusters}.pkl'
+    m_path = models_path +  'KMeans/kmeans_' + name + f'_n={n_clusters}' +'_alt'*alt + '.pkl'
     model = joblib.load(m_path)
     return model
 
@@ -271,18 +273,21 @@ def train_birch(name:str='nsu_level_1', n_clusters=3, size=10000):
     return model
 
 
-def train_kmeans(name:str='nsu_level_1', n_clusters=3, size=100000):
+def train_kmeans(name:str='nsu_level_1', n_clusters=3, alt=False):
     
-    filename = f'kmeans_{name}_n={n_clusters}.pkl'
+    filename = f'kmeans_{name}_n={n_clusters}' + '_alt' * alt + '.pkl'
     if filename in os.listdir('../ml_models/KMeans'):
         print(f'{filename} already exists')
         return
     d2v_model = load_doc2vec(name)
-    vectors = d2v_model.dv.get_normed_vectors()[:size]
+    if alt:
+        vectors = d2v_model.dv.vectors
+    else:
+        vectors = d2v_model.dv.get_normed_vectors()
     t_start = time.time()
     model = KMeans(n_clusters=n_clusters, n_init='auto')
     model.fit(vectors)
-    m_path = models_path + 'KMeans/kmeans_' + name + f'_n={n_clusters}.pkl'
+    m_path = models_path + 'KMeans/kmeans_' + name + f'_n={n_clusters}'+ '_alt' * alt + '.pkl'
     joblib.dump(model, m_path)
     t = round(time.time() - t_start, 1)
     s = f'KMeans for {name}, n_clusters = {n_clusters} trained in {t} sec\n\n\n'
@@ -291,15 +296,16 @@ def train_kmeans(name:str='nsu_level_1', n_clusters=3, size=100000):
 
 def train_models_vary_clusters(name:str='nsu_level_1'):
     
-    for n in range(51, 101):
-        train_kmeans(name, n)
+    for n in range(5, 101, 5):
+        train_kmeans(name, n, alt=True)
 
 
 def calc_distances_for_d2v_vectors(name:str='nsu_level_1', normed=True):
     
     model = load_doc2vec(name)
     vectors = model.dv.get_normed_vectors() if normed else model.dv.vectors
-    db_path = f'../databases/distances/distances_{name}' + '_normed'*normed + '.db'
+    # db_path = f'../databases/distances/distances_{name}' + '_normed'*normed + '.db'
+    db_path = f'D:\\opd/distances/distances_{name}' + '_normed'*normed + '_new.db'
     l_conn = sqlite3.connect(db_path, check_same_thread=False)
     l_cursor = l_conn.cursor()
     l_cursor.execute('''
@@ -311,18 +317,22 @@ def calc_distances_for_d2v_vectors(name:str='nsu_level_1', normed=True):
     s = f'Start distance calculating for {name} ' + 'normed'*normed
     write_logs(s)
     t_start = time.time()
-    for i in range(model.corpus_count):
-        req = f'SELECT EXISTS (SELECT id FROM distances WHERE id = {i})'
-        res = l_cursor.execute(req)
-        exists = res.fetchall()[0][0]
-        if not exists:
+    # for i in range(model.corpus_count):
+    for i in [40892, 47405]:
+        # req = f'SELECT EXISTS (SELECT id FROM distances WHERE id = {i})'
+        # res = l_cursor.execute(req)
+        # exists = res.fetchall()[0][0]
+        # if not exists:
+        if True:
             dists = []
+            # l_cursor.execute(f'DELETE FROM distances WHERE id = {i}')
             processing = multiprocessing.dummy.Pool(10)
             vector = vectors[i]
             rad_vectors = [vector - v for v in vectors]
             dists = processing.map(lambda x: round(float(norm(x)), 6), rad_vectors)
             dists = json.dumps(dists)
             req = f'INSERT INTO distances VALUES {(i, dists)}'
+            # req = 'UPDATE distances SET distances = ? where id = ?'
             l_cursor.execute(req)
             l_conn.commit()
             if i != 0 and i % 1000 == 0:
@@ -377,16 +387,16 @@ def get_dists(id_:int=0, name:str='nsu_level_1', normed=False):
 def calc_silh_values_for_clustering(n_clusters:int=20, name:str='nsu_level_1', normed=False):
     
     filename = f'kmeans_{name}_n={n_clusters}' + '_normed'*normed + '.txt'
-    if filename in os.listdir('../ml_models/sv'):
+    if filename in os.listdir(f'../ml_models/sv/{name}'):
         print(f'{filename} already exists')
         return
     t_start = time.time()
     s = f'Start calculating silhouette values for {name}, n_clusters={n_clusters}' + ', normed'*normed + '\n\n'
     print(s)
-    db_path = f'../databases/distances/distances_{name}' + '_normed'*normed + '.db'
+    db_path = f'D:\\opd/distances/distances_{name}' + '_normed'*normed + '.db'
     l_conn = sqlite3.connect(db_path, check_same_thread=False)
     l_cursor = l_conn.cursor()
-    model = load_kmeans(name, n_clusters)
+    model = load_kmeans(name, n_clusters, alt=not normed)
     
     clusters = [[] for _ in range(n_clusters)]
     labels = model.labels_
@@ -459,25 +469,25 @@ def calc_silh_values_for_clustering(n_clusters:int=20, name:str='nsu_level_1', n
     print(f'Sorted in {t} sec')
     
     write_logs(s)
-    path = f'../ml_models/sv/kmeans_{name}_n={n_clusters}' + '_normed'*normed + '.txt'
+    path = f'../ml_models/sv/{name}/kmeans_{name}_n={n_clusters}' + '_normed'*normed + '.txt'
     with open(path, 'w') as f:
         f.write(json.dumps(silh_values_by_clusters))
 
 def compile_silh_values():
     
+    # for n in range(2, 101, 5):
     for n in range(5, 101, 5):
-    # for n in range(2, 101):
-        calc_silh_values_for_clustering(n_clusters=n, normed=False)
+        calc_silh_values_for_clustering(n_clusters=n, name='nsu_level_1', normed=False)
 
 
 def graphic(n_clusters:int=20, name:str='nsu_level_1', normed=False):
     
     filename = f'kmeans_{name}_n={n_clusters}' + '_normed'*normed + '.txt'
-    if filename not in os.listdir('../ml_models/sv'):
+    if filename not in os.listdir(f'../ml_models/sv/{name}'):
         print(f'{filename} not exists')
         return
     
-    path = f'../ml_models/sv/kmeans_{name}_n={n_clusters}' + '_normed'*normed + '.txt'
+    path = f'../ml_models/sv/{name}/kmeans_{name}_n={n_clusters}' + '_normed'*normed + '.txt'
     with open(path, 'r') as f:
         sv = json.loads(f.read())
     
@@ -510,9 +520,9 @@ def avg_svs(name:str='nsu_level_1', normed=True):
     averages = []
     for n in range(1, 101):
         filename = f'kmeans_{name}_n={n}' + '_normed'*normed + '.txt'
-        if filename not in os.listdir('../ml_models/sv'):
+        if filename not in os.listdir(f'../ml_models/sv/{name}'):
             continue
-        path = f'../ml_models/sv/kmeans_{name}_n={n}' + '_normed'*normed +'.txt'
+        path = f'../ml_models/sv/{name}/kmeans_{name}_n={n}' + '_normed'*normed +'.txt'
         with open(path, 'r') as f:
             sv = json.loads(f.read())
         ns.append(n)
@@ -523,24 +533,24 @@ def avg_svs(name:str='nsu_level_1', normed=True):
     
     f = figure(tools="crosshair,pan,wheel_zoom,box_zoom,reset,hover")
     f.line(x=ns, y=averages, color='red')
-    path = f'../ml_models/sv/average_{name}' + '_normed'*normed + '.html'
+    path = f'../ml_models/sv/{name}/average_{name}' + '_normed'*normed + '.html'
     
     output_file(path, title='Average silhouette values')
     save(f)
 
 
-def avg_both_svs(name:str='nsu_level_1'):
+def avg_both_svs():
     
     graphic = figure(tools="crosshair,pan,wheel_zoom,box_zoom,reset,hover")
     
-    normed = False
+    name = 'nsu_level_1'
     ns = []
     averages = []
     for n in range(1, 101):
-        filename = f'kmeans_{name}_n={n}' + '_normed'*normed + '.txt'
-        if filename not in os.listdir('../ml_models/sv'):
+        filename = f'kmeans_{name}_n={n}' + '_normed' + '.txt'
+        if filename not in os.listdir(f'../ml_models/sv/{name}'):
             continue
-        path = f'../ml_models/sv/kmeans_{name}_n={n}' + '_normed'*normed +'.txt'
+        path = f'../ml_models/sv/{name}/kmeans_{name}_n={n}' + '_normed' +'.txt'
         with open(path, 'r') as f:
             sv = json.loads(f.read())
         ns.append(n)
@@ -549,16 +559,16 @@ def avg_both_svs(name:str='nsu_level_1'):
             svs.extend(svl)
         averages.append(mean(svs))
     
-    graphic.line(x=ns, y=averages, color='yellow', legend_label='Not normed')
+    graphic.line(x=ns, y=averages, color='yellow', legend_label=name)
     
-    normed = True
+    name = 'sob_all'
     ns = []
     averages = []
     for n in range(1, 101):
-        filename = f'kmeans_{name}_n={n}' + '_normed'*normed + '.txt'
-        if filename not in os.listdir('../ml_models/sv'):
+        filename = f'kmeans_{name}_n={n}' + '_normed' + '.txt'
+        if filename not in os.listdir(f'../ml_models/sv/{name}'):
             continue
-        path = f'../ml_models/sv/kmeans_{name}_n={n}' + '_normed'*normed +'.txt'
+        path = f'../ml_models/sv/{name}/kmeans_{name}_n={n}' + '_normed' +'.txt'
         with open(path, 'r') as f:
             sv = json.loads(f.read())
         ns.append(n)
@@ -568,7 +578,9 @@ def avg_both_svs(name:str='nsu_level_1'):
         averages.append(mean(svs))
     
     # f = figure(tools="crosshair,pan,wheel_zoom,box_zoom,reset,hover")
-    graphic.line(x=ns, y=averages, color='red', legend_label='Normed')
+    graphic.line(x=ns, y=averages, color='red', legend_label=name)
+    graphic.legend.location = 'top_left'
+    
     path = f'../ml_models/sv/average_{name}' + '_both' + '.html'
     
     output_file(path, title='Average silhouette values')
@@ -594,7 +606,32 @@ def inertias(name:str='nsu_level_1'):
 
 
 
+
+
 def test():
+    
+    for n in range(5, 101, 5):
+        graphic(n, name='nsu_level_1', normed=False)
+    
+    
+    # normed = 0
+    # db_path = 'D:\\opd/distances/distances_sob_all' + '_normed'*normed + '.db'
+    # l_conn = sqlite3.connect(db_path, check_same_thread=False)
+    # l_cursor = l_conn.cursor()
+    # t_start = time.time()
+    # for i in range(50500):
+    #     try:
+    #         l_cursor.execute(f'SELECT distances FROM distances WHERE id = {i}')
+    #         res = l_cursor.fetchall()
+    #     except:
+    #         print(i)
+    #         continue
+    #     if i % 1000 == 0:
+    #         t = round(time.time() - t_start, 1)
+    #         print(f'{i}: in {t} sec')
+    #         t_start = time.time()
+    # print(len(res))
+    # l_conn.close()
     
     pass
 

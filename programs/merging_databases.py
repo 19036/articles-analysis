@@ -1,19 +1,43 @@
 import sqlite3
 import sys, os, time
-from helpfun import write_logs_by_curr_time
 
 # db_path_from = '../databases/local_db/articles.db'
-db_path_from = '../databases/articles.db'
-table_name_from = 'articles'
+# db_path_from = '../databases/articles.db'
+# table_name_from = 'articles'
+db_path_from = 'D://opd/distances/distances_sob_all_normed.db'
+table_name_from = 'distances'
 # db_path_to = '../databases/articles.db'
 # db_path_to = '../databases/sob_articles.db'
-db_path_to = '../databases/nsu_articles.db'
-table_name_to = 'articles'
+# db_path_to = '../databases/nsu_articles.db'
+db_path_to = 'D://opd/distances/distances_sob_all_normed_new.db'
+# table_name_to = 'articles'
+table_name_to = 'distances'
 
 logs_path = ('../logs/merge_tables/' + time.ctime().replace(' ', '___') + '_merge.txt').replace(':', '-')
 
-def write_logs(message:str, time_data=True):
-    write_logs_by_curr_time(message, time_data, logs_path)
+def write_logs(message:str, time_data=True, path:str=logs_path):
+    
+    """ Пишет логи (каждый в отдельный файл, в названии точно время старта)
+        Используется в: downloading_cite_works
+                        downloading_referenced_works
+                        text_preprocessing
+                        merging_databases
+    """
+    
+    if path is None:
+        # try:
+        #     global logs_path
+        #     path = logs_path
+        # except:
+        path = '../logs/unknown_logs.txt'
+    
+    s = ''
+    if time_data:
+        s = f'[{time.ctime()}]   '
+    s += message + '\n'
+    with open(path, 'a') as f:
+        f.write(s)
+    print(s)
 
 try:
     conn_from = sqlite3.connect(db_path_from)
@@ -49,6 +73,12 @@ except:
 #                     ALTER TABLE articles
 #                     ADD cleaned_abstract TEXT
 #                     ''')
+cursor_to.execute("""
+                  CREATE TABLE IF NOT EXISTS distances (
+                  id INTEGER PRIMARY KEY,
+                  distances TEXT
+                  )
+                  """)
 
 
 def merge_tables():
@@ -60,51 +90,62 @@ def merge_tables():
     
     t_start = time.time()
     
-    cursor_from.execute(f'''
-                        SELECT *
-                        FROM {table_name_from}
-                        WHERE level = 1
-                        ''')
+    # cursor_from.execute(f'''
+    #                     SELECT *
+    #                     FROM {table_name_from}
+    #                     ''')
     
-    results = cursor_from.fetchall()
+    # results = cursor_from.fetchall()
     
-    t_got_values = round(time.time()-t_start, 1)
-    write_logs(f'Got values in {t_got_values} sec')
-    t_start = time.time()
+    # t_got_values = round(time.time()-t_start, 1)
+    # write_logs(f'Got values in {t_got_values} sec')
+    # t_start = time.time()
     
-    number_of_columns = len(results[0])
+    # number_of_columns = len(results[0])
+    number_of_columns = 2
     q_str = '(' + '?, '*(number_of_columns-1) + '?)'
     count = 0
     already_in_db_ids = []
     
-    for res in results:
+    # for res in results:
+        
+    for i in range(50500):
+        if i in [40892, 47405]:
+            continue
+        
+        cursor_from.execute(f'SELECT * FROM {table_name_from} WHERE id = {i}')
+        res = cursor_from.fetchall()[0]
         
         """ Проверяем, есть ли эта статья в БД """
-        cursor_to.execute(f'''
-                        SELECT
-                        EXISTS
-                        (select id
-                        from {table_name_to}
-                        where id == (?))
-                        ''', (res[0],))
-        already_exists = cursor_to.fetchall()[0][0]
-        if already_exists:
-            already_in_db_ids.append(res[0])
-            count += 1
-            continue
+        # cursor_to.execute(f'''
+        #                 SELECT
+        #                 EXISTS
+        #                 (select id
+        #                 from {table_name_to}
+        #                 where id == (?))
+        #                 ''', (res[0],))
+        # already_exists = cursor_to.fetchall()[0][0]
+        # if already_exists:
+        #     already_in_db_ids.append(res[0])
+        #     count += 1
+        #     continue
         
         cursor_to.execute(f"""
                            INSERT INTO {table_name_to}
                            VALUES
                            {q_str}
                            """, res)
+        conn_to.commit()
+    
+    conn_to.close()
+    conn_from.close()
     
     t_merge =  round(time.time()-t_start, 1)
     write_logs(f'Merged in {t_merge} sec')
-    if count != 0:
-        s = f'{count} from {len(results)} articles already exist, their ids:\n'
-        s += ' '.join(already_in_db_ids)
-        write_logs(s)
+    # if count != 0:
+    #     s = f'{count} from {len(results)} articles already exist, their ids:\n'
+    #     s += ' '.join(already_in_db_ids)
+    #     write_logs(s)
 
 
 
