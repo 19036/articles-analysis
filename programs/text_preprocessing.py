@@ -241,7 +241,7 @@ def clean_abstracts_global(level=1):
 
 if __name__ == '__main__':
     
-    clean_abstracts_global(2)
+    # clean_abstracts_global(2)
     
     pass
 
